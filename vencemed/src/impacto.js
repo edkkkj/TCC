@@ -1,14 +1,13 @@
 import './App.css';
-import Logo from './img/logo.png'
 
-function App() {
-  return (
-    <div className="App">
+function impacto(){
+    return(
+
       <body>
-
+      <div className="impacto">
       <header>
         <img src={Logo} alt="Logo" title="Logo do Projeto" />
-        <h1>Conscientização sobre o Descarte de Medicamentos</h1>
+        <h1>Impacto Ambiental</h1>
         <nav>
             <ul>
                 <li><a href="impacto.html"> Impacto Ambiental </a></li>
@@ -31,10 +30,9 @@ function App() {
     <footer>
             <p>&copy; 2024 - VenceMED</p>
     </footer>
-
-</body>
     </div>
-  );
+</body>
+    );
 }
 
-export default App;
+export default impacto

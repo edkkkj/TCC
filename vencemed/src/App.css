@@ -39,7 +39,7 @@ section {
 }
 
 h2 {
-  color: #4CAF50;
+  color: #000000;
 }
 
 ul {
@@ -49,7 +49,7 @@ ul {
 
 .button {
   display: inline-block;
-  background-color: #4CAF50;
+  background-color: #0076fd;
   color: white;
   padding: 10px 20px;
   text-decoration: none;
@@ -58,7 +58,7 @@ ul {
 }
 
 .button:hover {
-  background-color: #45a049;
+  background-color: #0076fd;
 }
 
 footer {
