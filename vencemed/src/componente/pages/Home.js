@@ -1,16 +1,19 @@
 import './App.css';
+import Logo from './img/logo.png';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import impacto from './componente/pages/impacto';
 
-function impacto(){
-    return(
-
+function App() {
+  return (
+    <div className="App">
       <body>
-      <div className="impacto">
+
       <header>
         <img src={Logo} alt="Logo" title="Logo do Projeto" />
-        <h1>Impacto Ambiental</h1>
+        <h1>Conscientização sobre o Descarte de Medicamentos</h1>
         <nav>
             <ul>
-                <li><a href="impacto.html"> Impacto Ambiental </a></li>
+                <li><a> Impacto Ambiental </a></li>
                 <li><a href="perigos.html">Perigos do Descarte Inadequado</a></li>
                 <li><a href="solucoes.html">Soluções</a></li>
             </ul>
@@ -30,9 +33,10 @@ function impacto(){
     <footer>
             <p>&copy; 2024 - VenceMED</p>
     </footer>
-    </div>
+
 </body>
-    );
+    </div>
+  );
 }
 
-export default impacto
+export default App;

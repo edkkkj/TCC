@@ -1,5 +1,7 @@
 import './App.css';
-import Logo from './img/logo.png'
+import Logo from './img/logo.png';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import impacto from './componente/pages/impacto';
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
         <h1>Conscientização sobre o Descarte de Medicamentos</h1>
         <nav>
             <ul>
-                <li><a href="impacto.html"> Impacto Ambiental </a></li>
+                <li><a> Impacto Ambiental </a></li>
                 <li><a href="perigos.html">Perigos do Descarte Inadequado</a></li>
                 <li><a href="solucoes.html">Soluções</a></li>
             </ul>
