@@ -1,11 +1,10 @@
-import './App.css';
-import Logo from './img/logo.png';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import impacto from './componente/pages/impacto';
+import React from "react";
+import Logo from "../../img/logo.png"
+import "../../App.css"
 
-function App() {
+function Home() {
   return (
-    <div className="App">
+    <div className="Home">
       <body>
 
       <header>
@@ -30,13 +29,9 @@ function App() {
         </ul>
     </section>
 
-    <footer>
-            <p>&copy; 2024 - VenceMED</p>
-    </footer>
-
 </body>
     </div>
   );
 }
 
-export default App;
+export default Home
