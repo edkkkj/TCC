@@ -1,16 +1,9 @@
 import React from "react";
-import "../../App.css"
-import Header from './layout/Header'
-import Footer from "./layout/Footer";
 
 function Home() {
   return (
     <div className="Home">
       <body>
-
-      <Header>
-      </Header>
- 
 
         <section id="perigos">
         <h2>Perigos do Descarte Inadequado</h2>
@@ -21,10 +14,6 @@ function Home() {
             <li>Proliferação de doenças e resistência a antibióticos</li>
         </ul>
     </section>
-
-    <Footer>
-      
-    </Footer>
 
 </body>
     </div>
