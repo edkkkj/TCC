@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
-import Style from "./Header.modules.css";
+import Logo from "../../../img/logo.png"; // Ajuste o caminho conforme necessário
+import "./Header.modules.css";
 
-function NavBar () {
+function Header() {
     return (
-    <ul className={Style}>
-      <li><Link to="/Home">Home</Link></li>
-      <li><Link to="/impacto">Impacto</Link></li>
-      <li><Link to="/solucoes">Soluções</Link></li>
-    </ul>
-    )
+        <header>
+            <div className="top-section">
+                <img src={Logo} alt="Logo" />
+                <h1>Conscientização sobre o Descarte de Medicamentos</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><Link to="/Home">Home</Link></li>
+                    <li><Link to="/Impacto">Impacto</Link></li>
+                    <li><Link to="/Solucoes">Soluções</Link></li>
+                </ul>
+            </nav>
+        </header>
+    );
 }
 
-export default NavBar
+export default Header;

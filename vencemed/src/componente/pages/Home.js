@@ -1,23 +1,16 @@
 import React from "react";
-import Logo from "../../img/logo.png"
 import "../../App.css"
+import Header from './layout/Header'
+import Footer from "./layout/Footer";
 
 function Home() {
   return (
     <div className="Home">
       <body>
 
-      <header>
-        <img src={Logo} alt="Logo" title="Logo do Projeto" />
-        <h1>Conscientização sobre o Descarte de Medicamentos</h1>
-        <nav>
-            <ul>
-                <li><a> Impacto Ambiental </a></li>
-                <li><a href="perigos.html">Perigos do Descarte Inadequado</a></li>
-                <li><a href="solucoes.html">Soluções</a></li>
-            </ul>
-        </nav>
-        </header>
+      <Header>
+      </Header>
+ 
 
         <section id="perigos">
         <h2>Perigos do Descarte Inadequado</h2>
@@ -28,6 +21,10 @@ function Home() {
             <li>Proliferação de doenças e resistência a antibióticos</li>
         </ul>
     </section>
+
+    <Footer>
+      
+    </Footer>
 
 </body>
     </div>

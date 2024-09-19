@@ -6,29 +6,6 @@ body {
   color: #333;
 }
 
-header {
-  background-color: #0076fd;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
 section {
   padding: 20px;
   margin: 20px auto;
@@ -59,24 +36,4 @@ ul {
 
 .button:hover {
   background-color: #0076fd;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #333;
-  color: white;
-  margin-top: 20px;
-}
-
-img {
-  position: absolute; 
-  left: 5%;
-  width: 20%;
-  height: 20%;
-  top: 1%;
-  max-width:200px;
-  max-height:150px;
-  width: auto;
-  height: auto;
 }
