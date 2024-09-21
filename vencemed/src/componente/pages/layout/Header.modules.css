@@ -1,49 +1,56 @@
 header {
-    background: linear-gradient(to bottom right, #f1efef, #0000ff);
+    background: linear-gradient(to bottom right, #9bb1f6, #0404cb);
     color: white;
-    padding: 20px; /* Espaço interno */
-    display: flex; /* Alinhamento flexível */
-    flex-direction: column; /* Coloca os itens em coluna */
-    align-items: center; /* Centraliza os itens */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header .top-section {
-    display: flex; /* Mantém a imagem e o título na mesma linha */
-    align-items: center; /* Alinha verticalmente os itens */
-    width: 100%; /* Garante que ocupe toda a largura */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espaça o logo e o ícone de conta */
+    width: 100%;
 }
 
 img {
-    display: block; /* Garante que a imagem fique alinhada */
-    margin-right: 20px; /* Espaço entre a imagem e o título */
-    max-width: 100px; /* Mantém a imagem pequena */
+    display: block;
+    margin-right: 20px;
+    max-width: 100px;
     max-height: 100px;
     width: auto;
     height: auto;
 }
 
 h1 {
-    font-size: 1.5rem; /* Tamanho do título */
-    margin: 0; /* Remove a margem */
-    text-align: center; /* Centraliza o texto */
-    flex: 1; /* Permite que o título ocupe o espaço restante */
+    font-size: 1.5rem;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+
+.top-section .icon {
+    font-size: 2rem; /* Ajusta o tamanho do ícone */
+    color: white;
+    cursor: pointer;
 }
 
 nav {
-    margin-top: 10px; /* Espaço entre o título e o menu */
-    text-align: center; /* Centraliza a navegação */
+    margin-top: 10px;
+    text-align: center;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: inline-block; /* Mantém os links alinhados horizontalmente */
+    display: inline-block;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px; /* Espaçamento entre os links */
+    margin: 0 15px;
 }
 
 nav ul li a {
@@ -51,10 +58,53 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     padding: 5px 10px;
-    transition: background-color 0.3s; /* Adiciona transição suave */
+    transition: linear;
 }
 
 nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Adicionado efeito de hover */
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
 }
+
+header .account-icon {
+    font-size: 2rem;
+    margin-left: auto;
+    color: white;
+    cursor: pointer; /* Indica que o ícone é interativo */
+}
+
+header .account-menu {
+    position: relative; /* Permite posicionar o dropdown menu */
+}
+
+header .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Posiciona o menu abaixo do ícone */
+    right: 0; /* Alinha o menu à direita */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Garante que o menu fique por cima */
+}
+
+header .dropdown-menu li {
+    margin-bottom: 10px;
+}
+
+header .dropdown-menu li:last-child {
+    margin-bottom: 0;
+}
+
+header .dropdown-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+header .dropdown-menu li a:hover {
+    color: #007BFF; /* Muda a cor ao passar o mouse */
+}
+
