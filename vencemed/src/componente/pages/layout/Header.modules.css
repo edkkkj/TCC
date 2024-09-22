@@ -108,3 +108,14 @@ header .dropdown-menu li a:hover {
     color: #007BFF; /* Muda a cor ao passar o mouse */
 }
 
+/* Header.modules.css */
+
+.sair-link {
+    color: #FF4C4C; /* Altere para a cor desejada */
+    font-weight: bold; /* Para destacar o link, se necessário */
+  }
+  
+  .sair-link:hover {
+    text-decoration: underline; /* Para adicionar um efeito ao passar o mouse */
+  }
+  
