@@ -17,6 +17,7 @@ footer h3 {
 }
 
 footer p {
+  color: white;
   margin-top: 10px;
   text-align: left; /* Alinha o texto à esquerda */
   line-height: 1.5;

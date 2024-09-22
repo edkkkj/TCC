@@ -1,40 +1,67 @@
 .PontosColeta {
-    padding: 20px;
-    max-width: 900px;
-    margin: 20px auto;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease;
-}
-
-.PontosColeta:hover {
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-}
-
-.PontosColeta h1 {
-    text-align: center;
-    color: #0076fd;
-    margin-bottom: 20px;
-}
-
-.PontosColeta form {
     display: flex;
-    justify-content: center;
-}
-
-.map-section {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.agendamento-form {
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  section {
+    width: 80%;
     background-color: #f9f9f9;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button.submit-button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.submit-button:hover {
+    background-color: #45a049;
+  }
+  
+  .pontos-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pontos-list li {
+    background-color: #eef;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  

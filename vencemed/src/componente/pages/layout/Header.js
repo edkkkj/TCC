@@ -10,11 +10,36 @@ function Header() {
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isCadastroOpen, setCadastroOpen] = useState(false);
   const [isSairConfirmOpen, setSairConfirmOpen] = useState(false);
+  
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [cep, setCep] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleConfirmSair = () => {
     setSairConfirmOpen(false);
-    // Aqui você pode colocar a lógica para deslogar o usuário
     console.log("Usuário deslogado");
+  };
+
+  const handleCadastro = (e) => {
+    e.preventDefault();
+    console.log({
+      email,
+      senha,
+      telefone,
+      cep,
+      cpf,
+      isAdmin,
+    });
+    setEmail('');
+    setSenha('');
+    setTelefone('');
+    setCep('');
+    setCpf('');
+    setIsAdmin(false);
+    setCadastroOpen(false);
   };
 
   return (
@@ -75,17 +100,55 @@ function Header() {
       {isCadastroOpen && (
         <Modal isOpen={isCadastroOpen} onClose={() => setCadastroOpen(false)}>
           <h2>Cadastro</h2>
-          <form>
+          <form onSubmit={handleCadastro}>
             <label>Email:</label>
-            <input type="email" placeholder="Digite seu email" />
+            <input 
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+              placeholder="Digite seu email" 
+            />
             <label>Senha:</label>
-            <input type="password" placeholder="Crie uma senha" />
+            <input 
+              type="password" 
+              value={senha} 
+              onChange={(e) => setSenha(e.target.value)} 
+              required 
+              placeholder="Crie uma senha" 
+            />
             <label>Telefone:</label>
-            <input type="tel" placeholder="Digite seu telefone" />
+            <input 
+              type="tel" 
+              value={telefone} 
+              onChange={(e) => setTelefone(e.target.value)} 
+              required 
+              placeholder="Digite seu telefone" 
+            />
             <label>CEP:</label>
-            <input type="text" placeholder="Digite seu CEP" />
+            <input 
+              type="text" 
+              value={cep} 
+              onChange={(e) => setCep(e.target.value)} 
+              required 
+              placeholder="Digite seu CEP" 
+            />
             <label>CPF:</label>
-            <input type="text" placeholder="Digite seu CPF" />
+            <input 
+              type="text" 
+              value={cpf} 
+              onChange={(e) => setCpf(e.target.value)} 
+              required 
+              placeholder="Digite seu CPF" 
+            />
+            <label>
+              <input 
+                type="checkbox" 
+                checked={isAdmin}
+                onChange={(e) => setIsAdmin(e.target.checked)} 
+              />
+              Cadastrar como Admin
+            </label>
             <button type="submit">Cadastrar</button>
           </form>
         </Modal>

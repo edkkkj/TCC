@@ -24,6 +24,7 @@ img {
 }
 
 h1 {
+    color: white;
     font-size: 1.5rem;
     margin: 0;
     text-align: center;
@@ -118,4 +119,53 @@ header .dropdown-menu li a:hover {
   .sair-link:hover {
     text-decoration: underline; /* Para adicionar um efeito ao passar o mouse */
   }
+
+  /* Estilo para o checkbox e texto ao lado */
+label {
+    display: flex; /* Usa flexbox para alinhar checkbox e texto */
+    align-items: center; /* Centraliza verticalmente */
+    margin-top: 10px; /* Espaçamento acima do label */
+}
+
+label input[type="checkbox"] {
+    margin-right: 5px; /* Espaçamento entre checkbox e texto */
+}
+
+/* Estilos para campos de entrada e checkboxes */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="checkbox"] {
+    color: #333; /* Cor do texto */
+    background-color: #fff; /* Cor de fundo */
+    border: 1px solid #ccc; /* Borda */
+    padding: 10px;
+    border-radius: 5px; /* Bordas arredondadas */
+    width: 100%; /* Largura total */
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+input[type="checkbox"] {
+    width: auto; /* Largura automática para checkboxes */
+    margin-right: 5px; /* Espaçamento à direita */
+}
+
+/* Estilo para labels */
+label {
+    color: #333; /* Cor do texto dos labels */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Reduz o espaço entre as caixas */
+}
+
+input {
+    padding: 10px; /* Preenchimento interno */
+    border: 1px solid #ccc; /* Estilo da borda */
+    border-radius: 5px; /* Cantos arredondados */
+}
+
   
