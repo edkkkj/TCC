@@ -31,10 +31,18 @@ function Header() {
           <VscAccount className="account-icon" />
           {menuOpen && (
             <ul className="dropdown-menu">
-              <li><Link onClick={() => { setLoginOpen(true); setMenuOpen(false); }}>Login</Link></li>
-              <li><Link onClick={() => { setCadastroOpen(true); setMenuOpen(false); }}>Cadastro</Link></li>
-              <li><Link to="/perfil" onClick={() => setMenuOpen(false)}>Perfil</Link></li>
-              <li><Link className="sair-link" onClick={() => { setSairConfirmOpen(true); setMenuOpen(false); }}>Sair</Link></li>
+              <li>
+                <Link onClick={() => { setLoginOpen(true); setMenuOpen(false); }}>Login</Link>
+              </li>
+              <li>
+                <Link onClick={() => { setCadastroOpen(true); setMenuOpen(false); }}>Cadastro</Link>
+              </li>
+              <li>
+                <Link to="/perfil" onClick={() => setMenuOpen(false)}>Perfil</Link>
+              </li>
+              <li>
+                <Link className="sair-link" onClick={() => { setSairConfirmOpen(true); setMenuOpen(false); }}>Sair</Link>
+              </li>
             </ul>
           )}
         </div>
@@ -45,6 +53,7 @@ function Header() {
           <li><Link to="/Impacto">Impacto</Link></li>
           <li><Link to="/Solucoes">Soluções</Link></li>
           <li><Link to="/Educacao">Educação</Link></li>
+          <li><Link to="/Agendamentos">Agendamentos</Link></li>
         </ul>
       </nav>
 

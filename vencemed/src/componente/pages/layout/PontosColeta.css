@@ -1,0 +1,40 @@
+.PontosColeta {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.PontosColeta:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.PontosColeta h1 {
+    text-align: center;
+    color: #0076fd;
+    margin-bottom: 20px;
+}
+
+.PontosColeta form {
+    display: flex;
+    justify-content: center;
+}
+
+.map-section {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.agendamento-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

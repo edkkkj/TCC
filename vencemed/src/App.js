@@ -4,7 +4,11 @@ import Impacto from './componente/pages/Impacto';
 import Solucoes from './componente/pages/Solucoes';
 import Perfil from './componente/pages/layout/Perfil';
 import Educacao from './componente/pages/Educacao';
+import Agendamentos from './componente/pages/Agendamentos'; // Importando Agendamentos
+import PontosColeta from './componente/pages/PontosColeta';
 import "./App.css";
+import 'leaflet/dist/leaflet.css';
+
 
 import Header from './componente/pages/layout/Header';
 import Footer from './componente/pages/layout/Footer';
@@ -17,8 +21,11 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/Impacto" element={<Impacto />} />
         <Route path="/Solucoes" element={<Solucoes />} />
-        <Route path="/perfil" element={<Perfil />} /> {/* Rota de Perfil */}
+        <Route path="/perfil" element={<Perfil />} />
         <Route path="/Educacao" element={<Educacao />} />
+        <Route path="/Agendamentos" element={<Agendamentos />} />
+        <Route path="/PontosColeta" element={<PontosColeta />} />
+
       </Routes>
       <Footer />
     </Router>

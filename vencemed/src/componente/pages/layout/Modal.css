@@ -1,4 +1,14 @@
 /* Modal.css */
+.modal {
+  position: fixed; /* ou absolute, dependendo do seu layout */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ajuste para ser maior que o do mapa */
+  /* outros estilos do modal */
+}
+
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -60,4 +70,28 @@
   form button:hover {
     background-color: #0056b3;
   }
-  
+
+  .map-container {
+    position: relative;
+    z-index: 1; /* Ajuste para ser menor que o do modal */
+}
+
+/* styles.css */
+.ReactModal__Overlay {
+  z-index: 1000; /* Ajuste para ser maior que o z-index do mapa */
+}
+
+.ReactModal__Content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  padding: 20px;
+  border-radius: 8px;
+  background: white;
+  width: 300px; /* Ajuste a largura conforme necessário */
+  height: auto; /* Ajuste a altura se necessário */
+  max-height: 400px; /* Defina uma altura máxima se quiser limitar */
+  overflow-y: auto; /* Permite rolagem se o conteúdo for muito longo */
+}
