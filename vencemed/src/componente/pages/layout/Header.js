@@ -142,7 +142,9 @@ function Header() {
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)} 
               />
+              <div className="Admin">
               Cadastrar como Admin
+              </div>
             </label>
             <button type="submit">Cadastrar</button>
           </form>

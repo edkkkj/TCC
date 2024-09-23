@@ -139,3 +139,7 @@ form {
     flex-direction: column;
     gap: 5px;
 }
+
+.Admin{
+    color: #333;
+}
