@@ -5,12 +5,13 @@ import ConfirmacaoSair from './ConfirmacaoSair';
 import "./Header.modules.css";
 import { VscAccount } from 'react-icons/vsc';
 
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isCadastroOpen, setCadastroOpen] = useState(false);
   const [isSairConfirmOpen, setSairConfirmOpen] = useState(false);
-  
+
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -46,13 +47,7 @@ function Header() {
     <header>
       <div className="top-section">
         <img src={"logo.png"} alt="Logo" />
-        <h1>Conscientização sobre o Descarte de Medicamentos</h1>
-
-        <div
-          className="account-menu"
-          onMouseEnter={() => setMenuOpen(true)}
-          onMouseLeave={() => setMenuOpen(false)}
-        >
+        <div className="account-menu" onMouseEnter={() => setMenuOpen(true)} onMouseLeave={() => setMenuOpen(false)}>
           <VscAccount className="account-icon" />
           {menuOpen && (
             <ul className="dropdown-menu">
@@ -77,8 +72,8 @@ function Header() {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/Impacto">Impacto</Link></li>
           <li><Link to="/Solucoes">Soluções</Link></li>
-          <li><Link to="/Educacao">Educação</Link></li>
           <li><Link to="/Agendamentos">Agendamentos</Link></li>
+          <li><Link to="/PontosColeta">Pontos de Coleta</Link></li> {/* Novo link */}
         </ul>
       </nav>
 

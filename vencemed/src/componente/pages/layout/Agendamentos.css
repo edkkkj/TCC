@@ -41,6 +41,7 @@ p {
 
 .login-prompt {
   text-align: center;
+  margin-top: 20px; /* Adiciona espaço acima do prompt de login */
 }
 
 .login-button {
@@ -55,5 +56,5 @@ p {
 }
 
 .login-button:hover {
-  background-color: #45a049;
+  background-color: #007BFF;
 }

@@ -27,8 +27,10 @@ function Agendamentos() {
 
   return (
     <div className="Agendamentos">
+      <section className="titulo">
+      <h2>Meus Agendamentos</h2>
+      </section>
       <section className="agendamentos-section">
-        <h1>Meus Agendamentos</h1>
         {usuarioLogado ? (
           <>
             {agendamentos.length > 0 ? (

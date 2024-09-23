@@ -1,44 +1,41 @@
 header {
-    background: linear-gradient(to bottom right, #9bb1f6, #0404cb);
-    color: white;
-    padding: 20px;
+    background-image: url("../../../img/fundo.png");
+    height: 120px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    color: white;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
 }
 
 header .top-section {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Espaça o logo e o ícone de conta */
+    justify-content: space-between;
     width: 100%;
+    padding: 10px;
 }
 
 img {
     display: block;
     margin-right: 20px;
-    max-width: 100px;
+    max-width: 150px;
     max-height: 100px;
     width: auto;
     height: auto;
 }
 
-h1 {
-    color: white;
-    font-size: 1.5rem;
-    margin: 0;
-    text-align: center;
-    flex: 1;
-}
-
-.top-section .icon {
-    font-size: 2rem; /* Ajusta o tamanho do ícone */
+.top-section .account-icon {
+    font-size: 2.5rem;
     color: white;
     cursor: pointer;
 }
 
 nav {
-    margin-top: 10px;
+    margin-top: -25px;
     text-align: center;
 }
 
@@ -51,15 +48,16 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 8px; /* Reduzido o espaçamento entre os links */
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 5px 10px;
-    transition: linear;
+    padding: 10px 15px; /* Aumentado o padding para links maiores */
+    font-size: 1.2rem; /* Aumentado o tamanho da fonte */
+    transition: background-color 0.3s;
 }
 
 nav ul li a:hover {
@@ -67,28 +65,21 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-header .account-icon {
-    font-size: 2rem;
-    margin-left: auto;
-    color: white;
-    cursor: pointer; /* Indica que o ícone é interativo */
-}
-
 header .account-menu {
-    position: relative; /* Permite posicionar o dropdown menu */
+    position: relative;
 }
 
 header .dropdown-menu {
     position: absolute;
-    top: 100%; /* Posiciona o menu abaixo do ícone */
-    right: 0; /* Alinha o menu à direita */
+    top: 100%;
+    right: 0;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     list-style: none;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Garante que o menu fique por cima */
+    z-index: 1000;
 }
 
 header .dropdown-menu li {
@@ -106,66 +97,45 @@ header .dropdown-menu li a {
 }
 
 header .dropdown-menu li a:hover {
-    color: #007BFF; /* Muda a cor ao passar o mouse */
+    color: #007BFF;
 }
-
-/* Header.modules.css */
 
 .sair-link {
-    color: #FF4C4C; /* Altere para a cor desejada */
-    font-weight: bold; /* Para destacar o link, se necessário */
-  }
-  
-  .sair-link:hover {
-    text-decoration: underline; /* Para adicionar um efeito ao passar o mouse */
-  }
+    color: #FF4C4C;
+    font-weight: bold;
+}
 
-  /* Estilo para o checkbox e texto ao lado */
+.sair-link:hover {
+    text-decoration: underline;
+}
+
 label {
-    display: flex; /* Usa flexbox para alinhar checkbox e texto */
-    align-items: center; /* Centraliza verticalmente */
-    margin-top: 10px; /* Espaçamento acima do label */
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
-label input[type="checkbox"] {
-    margin-right: 5px; /* Espaçamento entre checkbox e texto */
-}
-
-/* Estilos para campos de entrada e checkboxes */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"],
 input[type="checkbox"] {
-    color: #333; /* Cor do texto */
-    background-color: #fff; /* Cor de fundo */
-    border: 1px solid #ccc; /* Borda */
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
     padding: 10px;
-    border-radius: 5px; /* Bordas arredondadas */
-    width: 100%; /* Largura total */
-    margin-bottom: 10px; /* Espaçamento inferior */
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 input[type="checkbox"] {
-    width: auto; /* Largura automática para checkboxes */
-    margin-right: 5px; /* Espaçamento à direita */
-}
-
-/* Estilo para labels */
-label {
-    color: #333; /* Cor do texto dos labels */
+    width: auto;
+    margin-right: 5px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Reduz o espaço entre as caixas */
+    gap: 5px;
 }
-
-input {
-    padding: 10px; /* Preenchimento interno */
-    border: 1px solid #ccc; /* Estilo da borda */
-    border-radius: 5px; /* Cantos arredondados */
-}
-
-  

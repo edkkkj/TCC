@@ -1,0 +1,49 @@
+/* Estilizando a linha de separação */
+hr {
+    border: none;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+
+/* Ajustes para telas maiores */
+@media (min-width: 768px) {
+    #imagem-impacto img {
+        max-width: 1200px; /* Aumenta a largura máxima em telas grandes */
+    }
+}
+
+#imagem-impacto {
+    display: flex;
+    flex-direction: column; /* Adiciona esta linha */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    margin-top: 30px;
+    text-align: center; /* Centraliza o título da seção */
+}
+
+#imagem-impacto img {
+    width: 100%;  /* Faz a imagem ocupar 100% da largura do container */
+    max-width: 800px; /* Limita a largura máxima da imagem */
+    max-height: 500px; /* Limita a altura máxima da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 8px; /* Adiciona cantos levemente arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
+    display: block; /* Garante que não tenha espaçamento extra */
+}
+
+#imagem-impacto h2 {
+    margin-bottom: 20px; /* Espaçamento entre o título e a imagem */
+}
+
+.titulo {
+    background-color: hsl(217, 51%, 51%); /* Cor de fundo da seção */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+}
+
+.titulo h2 {
+    color: white;
+}
+

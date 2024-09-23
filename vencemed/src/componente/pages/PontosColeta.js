@@ -8,8 +8,8 @@ const PontosColeta = () => {
   const [novoPonto, setNovoPonto] = useState({
     nome: "",
     endereco: "",
-    lat: "",
-    lng: "",
+    cep: "",
+    horario: "",
   });
 
   const handleChange = (e) => {
@@ -25,7 +25,7 @@ const PontosColeta = () => {
     const pontosAtualizados = [...pontos, novoPontoDeColeta];
     setPontos(pontosAtualizados);
     localStorage.setItem("pontosDeColeta", JSON.stringify(pontosAtualizados));
-    setNovoPonto({ nome: "", endereco: "", lat: "", lng: "" });
+    setNovoPonto({ nome: "", endereco: "", cep: "", horario: "" });
     alert("Ponto de coleta cadastrado com sucesso!");
   };
 
@@ -55,23 +55,24 @@ const PontosColeta = () => {
             />
           </div>
           <div className="input-group">
-            <label>Latitude:</label>
+            <label>CEP:</label>
             <input
               type="text"
-              name="lat"
-              value={novoPonto.lat}
+              name="cep"
+              value={novoPonto.cep}
               onChange={handleChange}
               required
             />
           </div>
           <div className="input-group">
-            <label>Longitude:</label>
+            <label>Horário de funcionamento:</label>
             <input
               type="text"
-              name="lng"
-              value={novoPonto.lng}
+              name="horario"
+              value={novoPonto.horario}
               onChange={handleChange}
               required
+              placeholder="Ex: Segunda a Sexta, 9h às 18h"
             />
           </div>
           <button className="submit-button" type="submit">
@@ -87,7 +88,8 @@ const PontosColeta = () => {
             pontos.map((ponto) => (
               <li key={ponto.id}>
                 <strong>{ponto.nome}</strong> - {ponto.endereco} <br />
-                <em>(Lat: {ponto.lat}, Lng: {ponto.lng})</em>
+                <em>CEP: {ponto.cep}</em> <br />
+                <em>Horário: {ponto.horario}</em>
               </li>
             ))
           ) : (

@@ -3,7 +3,6 @@ import Home from './componente/pages/Home';
 import Impacto from './componente/pages/Impacto';
 import Solucoes from './componente/pages/Solucoes';
 import Perfil from './componente/pages/layout/Perfil';
-import Educacao from './componente/pages/Educacao';
 import Agendamentos from './componente/pages/Agendamentos'; // Importando Agendamentos
 import PontosColeta from './componente/pages/PontosColeta';
 import "./App.css";
@@ -22,7 +21,6 @@ function App() {
         <Route path="/Impacto" element={<Impacto />} />
         <Route path="/Solucoes" element={<Solucoes />} />
         <Route path="/perfil" element={<Perfil />} />
-        <Route path="/Educacao" element={<Educacao />} />
         <Route path="/Agendamentos" element={<Agendamentos />} />
         <Route path="/PontosColeta" element={<PontosColeta />} />
 

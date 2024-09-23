@@ -1,12 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import "./layout/Home.css"; // Certifique-se de adicionar o arquivo de estilo
 
 function Home() {
   return (
     <div className="Home">
-      <section id="perigos">
+      <section id="somos" className="section">
+        <h1>Quem somos e o que fazemos?</h1>
+        <p>
+          Somos a <strong>VENCEMED</strong>, uma equipe dedicada à conscientização e ao agendamento de serviços, com o objetivo de incentivar o descarte responsável de medicamentos vencidos ou sem uso.
+        </p>
+        <p>
+          Nosso sistema de agendamento permite a comunicação entre nossa equipe e os estabelecimentos de pontos de coleta, cadastrados em nosso site. Estes estabelecimentos recebem as solicitações de coleta dos clientes, com informações como data e local, e enviam seus serviços de logística para buscar os medicamentos diretamente na residência dos clientes.
+        </p>
+      </section>
+
+      <hr className="section-divider" />
+
+      <section id="perigos" className="section">
         <h2>Perigos do Descarte Inadequado</h2>
-        <p>O descarte de embalagens e remédios em lixo comum ou esgoto pode causar sérios riscos à saúde pública e ao meio ambiente, contribuindo para a contaminação de rios, oceanos e alimentos.</p>
+        <p>
+          O descarte de embalagens e remédios em lixo comum ou esgoto pode gerar sérios riscos à saúde pública e ao meio ambiente, contribuindo para a contaminação de rios, oceanos e alimentos.
+        </p>
         <ul>
           <li>Contaminação de cursos d'água e do solo</li>
           <li>Riscos à saúde humana e animal</li>
@@ -14,7 +28,9 @@ function Home() {
         </ul>
       </section>
 
-      <section id="dicas">
+      <hr className="section-divider" />
+
+      <section id="dicas" className="section">
         <h2>Dicas para Descarte Seguro</h2>
         <ul>
           <li>Retire a embalagem original e esconda informações pessoais.</li>
@@ -23,27 +39,13 @@ function Home() {
         </ul>
       </section>
 
-      <section id="acao">
-        <h2>Participe da Mudança!</h2>
-        <p>Descubra onde descartar seus medicamentos de forma segura.</p>
-        <Link to="/PontosColeta" className="button">Encontre Pontos de Coleta</Link>
-      </section>
+      <hr className="section-divider" />
 
-      <section id="estatisticas">
+      <section id="estatisticas" className="section">
         <h2>Impacto do Descarte Inadequado</h2>
-        <p>Sabia que cerca de 30% dos medicamentos não utilizados são descartados incorretamente?</p>
-      </section>
-
-      <section id="testemunhos">
-        <h2>O que as pessoas estão dizendo</h2>
-        <blockquote>
-          <p>"Aprendi como descartar medicamentos de forma segura e agora sempre faço isso!" - Maria S.</p>
-        </blockquote>
-      </section>
-
-      <section id="imagem-impacto">
-        <h2>Visualize o Impacto</h2>
-        <img src="url-da-imagem" alt="Impacto do descarte inadequado" />
+        <p>
+          Sabia que cerca de <strong>30% dos medicamentos</strong> não utilizados são descartados de forma incorreta, aumentando os riscos de contaminação ambiental?
+        </p>
       </section>
     </div>
   );

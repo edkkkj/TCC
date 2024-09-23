@@ -1,0 +1,24 @@
+#solucoes {
+    max-width: 800px; /* Limita a largura do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 20px; /* Adiciona espaço ao redor do conteúdo */
+    font-family: Arial, sans-serif; /* Define a fonte */
+    line-height: 1.6; /* Aumenta o espaçamento entre as linhas */
+}
+
+#solucoes h2 {
+    text-align: center; /* Centraliza o título */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+#solucoes p {
+    text-align: justify; /* Justifica o texto */
+    margin-bottom: 15px; /* Espaço entre os parágrafos */
+}
+
+hr {
+    border: none; /* Remove bordas padrão */
+    height: 2px; /* Define a altura da linha */
+    background-color: #ccc; /* Cor da linha */
+    margin: 20px 0; /* Espaço acima e abaixo da linha */
+}
