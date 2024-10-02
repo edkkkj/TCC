@@ -1,4 +1,4 @@
-import "./Footer.css";
+import "../layout/Footer.css";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 function Footer() {

@@ -1,6 +1,6 @@
 // Modal.js
 import React from 'react';
-import './Modal.css';
+import '../layout/Modal.css';
 
 function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null;

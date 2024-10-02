@@ -1,5 +1,5 @@
-import Lixo from "../../img/lixo.png";
-import "./layout/Impacto.css"
+import Lixo from "../img/lixo.png";
+import "../layout/Impacto.css"
 
 function Impacto() {
     return (

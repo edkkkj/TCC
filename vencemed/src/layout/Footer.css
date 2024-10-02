@@ -4,7 +4,7 @@ footer {
   justify-content: center;
   align-items: center;
   padding: 10px; /* Diminuindo o padding */
-  background-color: #333;
+  background-color: hsl(217, 51%, 51%);
   color: white;
   width: 100%;
   margin-top: auto; /* Empurra o footer para o fim */

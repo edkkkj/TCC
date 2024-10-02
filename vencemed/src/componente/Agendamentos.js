@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from '../pages/layout/Modal'; // Importa o modal usado para login
-import "../pages/layout/Agendamentos.css";
+import Modal from '../componente/Modal'; // Importa o modal usado para login
+import "../layout/Agendamentos.css";
 
 function Agendamentos() {
   const navigate = useNavigate();

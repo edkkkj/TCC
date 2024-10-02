@@ -1,4 +1,4 @@
-import "./layout/Solucoes.css"
+import "../layout/Solucoes.css"
 
 function Solucoes() {
     return (

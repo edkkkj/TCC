@@ -1,0 +1,82 @@
+/* Perfil.modules.css */
+.perfil-container {
+  background-color: #ffffff; /* Fundo branco para mais contraste */
+  padding: 30px; /* Maior padding para espaçamento */
+  border-radius: 12px; /* Arredondamento leve */
+  max-width: 450px; /* Ligeiramente mais largo */
+  margin: 60px auto; /* Ajuste no espaçamento vertical */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+  font-family: 'Arial', sans-serif; /* Fonte mais comum */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px; /* Espaçamento maior entre título e conteúdo */
+  font-size: 24px; /* Título maior */
+  color: #333333; /* Cor mais escura para contraste */
+}
+
+.perfil-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item {
+  margin-bottom: 15px; /* Maior espaçamento entre os campos */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px; /* Mais espaço entre label e input */
+  font-weight: bold; /* Negrito nos labels */
+  color: #555555; /* Cor cinza suave */
+}
+
+input {
+  width: 100%;
+  padding: 12px; /* Maior padding para inputs */
+  border: 1px solid #ccc; /* Bordas mais suaves */
+  border-radius: 8px; /* Arredondamento maior */
+  font-size: 16px; /* Aumentar o tamanho da fonte dos inputs */
+  background-color: #f5f5f5; /* Fundo levemente cinza */
+  transition: border-color 0.3s ease; /* Suavidade na transição de borda */
+}
+
+input:focus {
+  border-color: #007BFF; /* Cor de destaque ao focar */
+  background-color: #fff; /* Fundo branco ao focar */
+  outline: none; /* Remover o outline padrão */
+}
+
+.save-button {
+  margin-top: 25px; /* Espaçamento maior antes do botão */
+  padding: 12px 25px; /* Maior padding no botão */
+  border: none;
+  border-radius: 8px; /* Arredondamento maior no botão */
+  background-color: #28a745; /* Cor verde para indicar sucesso/salvar */
+  color: white;
+  cursor: pointer;
+  font-size: 18px; /* Texto maior no botão */
+  font-weight: bold; /* Texto em negrito */
+  width: 100%; /* Largura total */
+  transition: background-color 0.3s ease; /* Suavizar a transição de cor */
+}
+
+.save-button:hover {
+  background-color: #218838; /* Efeito hover verde mais escuro */
+}
+
+.save-button:active {
+  background-color: #1e7e34; /* Cor ao clicar no botão */
+}
+
+@media (max-width: 500px) {
+  .perfil-container {
+      padding: 20px; /* Reduzir o padding em telas menores */
+      max-width: 100%; /* Ocupar a largura total em telas pequenas */
+  }
+
+  h2 {
+      font-size: 22px; /* Ajuste no tamanho da fonte do título */
+  }
+}

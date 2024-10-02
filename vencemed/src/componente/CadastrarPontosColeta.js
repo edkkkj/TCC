@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import "../pages/layout/PontosColeta.css"; // Arquivo de estilo CSS para melhorar o visual
+import React, { useState, useEffect } from "react";
+import "../layout/CadPontosColeta.css"; // Arquivo de estilo CSS para melhorar o visual
+import { useNavigate } from "react-router-dom";
 
-const PontosColeta = () => {
+const CadPontosColeta = () => {
   const [pontos, setPontos] = useState(() => {
     return JSON.parse(localStorage.getItem("pontosDeColeta")) || [];
   });
@@ -11,6 +12,19 @@ const PontosColeta = () => {
     cep: "",
     horario: "",
   });
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Verifica se o usuário é admin ao carregar o componente
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (loggedInUser && loggedInUser.isAdmin) {
+      setIsAdmin(true);
+    } else {
+      alert('Apenas administradores podem acessar esta página.');
+      navigate('/'); // Redireciona para a página inicial se não for administrador
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setNovoPonto({ ...novoPonto, [e.target.name]: e.target.value });
@@ -28,6 +42,11 @@ const PontosColeta = () => {
     setNovoPonto({ nome: "", endereco: "", cep: "", horario: "" });
     alert("Ponto de coleta cadastrado com sucesso!");
   };
+
+  // Retorna null se não for admin, não renderiza nada
+  if (!isAdmin) {
+    return null; 
+  }
 
   return (
     <div className="PontosColeta">
@@ -101,4 +120,4 @@ const PontosColeta = () => {
   );
 };
 
-export default PontosColeta;
+export default CadPontosColeta;

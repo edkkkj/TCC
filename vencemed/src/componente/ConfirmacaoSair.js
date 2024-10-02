@@ -1,5 +1,5 @@
 import React from 'react';
-import './ConfirmacaoSair.modules.css';
+import '../layout/ConfirmacaoSair.modules.css';
 
 function ConfirmacaoSair({ onConfirm, onCancel }) {
   return (

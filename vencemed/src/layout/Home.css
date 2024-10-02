@@ -1,0 +1,120 @@
+/* Estrutura Principal */
+.home-container {
+  font-family: 'Arial', sans-serif;
+  color: #2c3e50; /* Esta cor pode ser removida, pois não será mais usada no hero */
+  text-align: center;
+  margin: 0; /* Remover margens */
+  padding: 0; /* Remover o preenchimento */
+}
+
+/* Estilo da Hero Section (Parte inicial com o destaque) */
+.hero-content {
+  margin: 0; /* Remover margens */
+  padding: 40px 20px; /* Manter o espaçamento interno */
+  background-image: url(../img/remedios.png); /* Caminho da imagem */
+  background-size: cover; /* Preenche a área */
+  background-position: left center; /* Alinha à esquerda */
+  background-repeat: no-repeat; /* Não repete a imagem */
+  width: 100vw; /* Largura total da viewport */
+  position: relative; /* Para controlar o posicionamento */
+  left: 50%; /* Ajustar a posição para o centro */
+  right: 50%; /* Ajustar a posição para o centro */
+  transform: translateX(-50%); /* Mover para a esquerda */
+}
+
+/* Estilo do título e descrição da hero section */
+.hero-title {
+  font-size: 2.5rem;
+  color: white; /* Cor do título para branco */
+  margin-bottom: 20px;
+}
+
+.hero-description {
+  font-size: 1.3rem;
+  color: white; /* Cor da descrição para branco */
+  margin-bottom: 30px;
+}
+
+/* Seção de Ícones */
+.icon-section {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  gap: 50px; /* Aumentar o espaçamento entre os ícones */
+}
+
+.icon-item {
+  text-align: center; /* Centraliza o texto */
+  max-width: 150px; /* Define uma largura máxima para manter o alinhamento */
+}
+
+.social-icon {
+  font-size: 3rem;
+  color: #2980b9; /* Manter a cor dos ícones */
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #1f6489;
+}
+
+h3 {
+  font-size: 1.3rem; /* Tamanho do título */
+  color: #2980b9; /* Cor dos títulos dos ícones */
+  margin: 10px 0 5px; /* Margens para espaçamento */
+}
+
+p {
+  font-size: 1rem; /* Tamanho da fonte para descrições */
+  color: #34495e; /* Cor do texto */
+  margin: 0; /* Remove margens para melhor alinhamento */
+}
+
+
+
+/* Estilo para o conteúdo informativo */
+.info-content {
+  margin-bottom: 40px;
+}
+
+.info-content h2 {
+  font-size: 2rem;
+  color: #2980b9;
+  margin-bottom: 20px;
+}
+
+.info-content p,
+.info-content ul {
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+strong {
+  color: #2980b9;
+}
+
+/* Layout Responsivo */
+@media (min-width: 768px) {
+  .home-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.6rem;
+  }
+}
