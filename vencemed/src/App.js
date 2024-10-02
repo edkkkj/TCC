@@ -19,7 +19,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/Impacto" element={<Impacto />} />
+        <Route path="/impacto" element={<Impacto />} />
         <Route path="/Solucoes" element={<Solucoes />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/Agendamentos" element={<Agendamentos />} />
