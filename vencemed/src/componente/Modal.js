@@ -1,4 +1,3 @@
-// Modal.js
 import React from 'react';
 import '../layout/Modal.css';
 

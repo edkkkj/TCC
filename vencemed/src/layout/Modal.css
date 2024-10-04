@@ -8,7 +8,6 @@
   /* outros estilos do modal */
 }
 
-
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -20,17 +19,17 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background: white;
     padding: 20px;
     border-radius: 10px;
     width: 400px;
     position: relative;
-  }
-  
-  .close-btn {
+}
+
+.close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -38,26 +37,26 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-  }
-  
-  form {
+}
+
+form {
     display: flex;
     flex-direction: column;
-  }
-  
-  form label {
+}
+
+form label {
     margin-top: 5px; /* Diminuído de 10px para 5px */
     font-size: 14px;
-  }
-  
-  form input {
+}
+
+form input {
     padding: 6px; /* Reduzi o padding */
     margin-top: 3px; /* Reduzi o margin-top para aproximar os campos */
     border-radius: 5px;
     border: 1px solid #ccc;
-  }
-  
-  form button {
+}
+
+form button {
     margin-top: 15px;
     padding: 10px;
     background-color: #007BFF;
@@ -65,33 +64,8 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  form button:hover {
+}
+
+form button:hover {
     background-color: #0056b3;
-  }
-
-  .map-container {
-    position: relative;
-    z-index: 1; /* Ajuste para ser menor que o do modal */
-}
-
-/* styles.css */
-.ReactModal__Overlay {
-  z-index: 1000; /* Ajuste para ser maior que o z-index do mapa */
-}
-
-.ReactModal__Content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1001;
-  padding: 20px;
-  border-radius: 8px;
-  background: white;
-  width: 300px; /* Ajuste a largura conforme necessário */
-  height: auto; /* Ajuste a altura se necessário */
-  max-height: 400px; /* Defina uma altura máxima se quiser limitar */
-  overflow-y: auto; /* Permite rolagem se o conteúdo for muito longo */
 }

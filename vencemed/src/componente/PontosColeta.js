@@ -37,7 +37,7 @@ const PontosColeta = () => {
           <p>
             <strong>Apenas administradores podem cadastrar novos pontos de coleta.</strong>
           </p>
-          <button onClick={() => window.location.href = '/CadastrarPontoColeta'}>
+          <button onClick={() => window.location.href = '/CadastrarPontosColeta'}>
             Cadastrar Ponto de Coleta
           </button>
         </div>

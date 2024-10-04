@@ -55,6 +55,17 @@ function Header() {
     setCadastroOpen(false);
   };
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (storedUser && storedUser.email === email && storedUser.senha === senha) {
+      setLoggedInUser(storedUser);
+      setLoginOpen(false);
+    } else {
+      alert("Email ou senha incorretos");
+    }
+  };
+
   return (
     <header>
       <div className="top-section">
@@ -93,17 +104,91 @@ function Header() {
           <li><Link to="/Solucoes">Soluções</Link></li>
           <li><Link to="/Agendamentos">Agendamentos</Link></li>
           <li><Link to="/PontosColeta">Pontos de Coleta</Link></li>
-          {/* O link "Cadastrar Pontos de Coleta" aparece apenas para administradores */}
           {isAdmin && (
             <li><Link to="/CadastrarPontosColeta">Cadastrar Ponto de Coleta</Link></li>
           )}
         </ul>
       </nav>
 
-      {/* Modal de Login e Cadastro não inclui "Cadastrar Ponto de Coleta" */}
-      {isLoginOpen && <Modal title="Login" onClose={() => setLoginOpen(false)} />}
-      {isCadastroOpen && <Modal title="Cadastro" onClose={() => setCadastroOpen(false)} />}
-      {isSairConfirmOpen && <ConfirmacaoSair onConfirm={handleConfirmSair} onCancel={() => setSairConfirmOpen(false)} />}
+      {/* Modal de Login */}
+      {isLoginOpen && (
+        <Modal isOpen={isLoginOpen} onClose={() => setLoginOpen(false)}>
+          <h2>Login</h2>
+          <form onSubmit={handleLogin}>
+            <label>Email ou Nome de Usuário:</label>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Digite seu email ou nome de usuário"
+              required
+            />
+            <label>Senha:</label>
+            <input
+              type="password"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              placeholder="Digite sua senha"
+              required
+            />
+            <button type="submit" className="login-button">Entrar</button>
+          </form>
+        </Modal>
+      )}
+
+      {/* Modal de Cadastro */}
+      {isCadastroOpen && (
+        <Modal isOpen={isCadastroOpen} onClose={() => setCadastroOpen(false)}>
+          <h2>Cadastro</h2>
+          <form onSubmit={handleCadastro} className="form-cadastro">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Digite seu email"
+              required
+            />
+            <label>Senha:</label>
+            <input
+              type="password"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              placeholder="Digite sua senha"
+              required
+            />
+            <label>Telefone:</label>
+            <input
+              type="tel"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
+              placeholder="Digite seu telefone"
+              required
+            />
+            <label>CEP:</label>
+            <input
+              type="text"
+              value={cep}
+              onChange={(e) => setCep(e.target.value)}
+              placeholder="Digite seu CEP"
+              required
+            />
+            <label>CPF:</label>
+            <input
+              type="text"
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
+              placeholder="Digite seu CPF"
+              required
+            />
+            <button type="submit" className="cadastro-button">Cadastrar</button>
+          </form>
+        </Modal>
+      )}
+
+      {isSairConfirmOpen && (
+        <ConfirmacaoSair onConfirm={handleConfirmSair} onCancel={() => setSairConfirmOpen(false)} />
+      )}
     </header>
   );
 }

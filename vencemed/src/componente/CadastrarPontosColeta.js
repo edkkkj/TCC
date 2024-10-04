@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../layout/CadPontosColeta.css"; // Arquivo de estilo CSS para melhorar o visual
+import "../layout/CadPontosColeta.css";
 import { useNavigate } from "react-router-dom";
 
 const CadPontosColeta = () => {
@@ -12,17 +12,18 @@ const CadPontosColeta = () => {
     cep: "",
     horario: "",
   });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Verifica se o usuário é admin ao carregar o componente
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     if (loggedInUser && loggedInUser.isAdmin) {
       setIsAdmin(true);
     } else {
       alert('Apenas administradores podem acessar esta página.');
-      navigate('/'); // Redireciona para a página inicial se não for administrador
+      navigate('/');
     }
   }, [navigate]);
 
@@ -32,26 +33,56 @@ const CadPontosColeta = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const novoPontoDeColeta = {
-      ...novoPonto,
-      id: new Date().getTime(), // Gera um ID único para cada ponto
-    };
-    const pontosAtualizados = [...pontos, novoPontoDeColeta];
-    setPontos(pontosAtualizados);
-    localStorage.setItem("pontosDeColeta", JSON.stringify(pontosAtualizados));
+    if (isEditing) {
+      const pontosAtualizados = pontos.map((ponto) =>
+        ponto.id === editId ? { ...ponto, ...novoPonto } : ponto
+      );
+      setPontos(pontosAtualizados);
+      localStorage.setItem("pontosDeColeta", JSON.stringify(pontosAtualizados));
+      setIsEditing(false);
+      setEditId(null);
+      alert("Ponto de coleta atualizado com sucesso!");
+    } else {
+      const novoPontoDeColeta = {
+        ...novoPonto,
+        id: new Date().getTime(),
+      };
+      const pontosAtualizados = [...pontos, novoPontoDeColeta];
+      setPontos(pontosAtualizados);
+      localStorage.setItem("pontosDeColeta", JSON.stringify(pontosAtualizados));
+      alert("Ponto de coleta cadastrado com sucesso!");
+    }
+
     setNovoPonto({ nome: "", endereco: "", cep: "", horario: "" });
-    alert("Ponto de coleta cadastrado com sucesso!");
   };
 
-  // Retorna null se não for admin, não renderiza nada
+  const handleEdit = (id) => {
+    const ponto = pontos.find((ponto) => ponto.id === id);
+    setNovoPonto({
+      nome: ponto.nome,
+      endereco: ponto.endereco,
+      cep: ponto.cep,
+      horario: ponto.horario,
+    });
+    setIsEditing(true);
+    setEditId(id);
+  };
+
+  const handleDelete = (id) => {
+    const pontosAtualizados = pontos.filter((ponto) => ponto.id !== id);
+    setPontos(pontosAtualizados);
+    localStorage.setItem("pontosDeColeta", JSON.stringify(pontosAtualizados));
+    alert("Ponto de coleta excluído com sucesso!");
+  };
+
   if (!isAdmin) {
-    return null; 
+    return null;
   }
 
   return (
     <div className="PontosColeta">
       <section className="cadastro-section">
-        <h1>Cadastrar Ponto de Coleta</h1>
+        <h1>{isEditing ? "Editar Ponto de Coleta" : "Cadastrar Ponto de Coleta"}</h1>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Nome:</label>
@@ -95,7 +126,7 @@ const CadPontosColeta = () => {
             />
           </div>
           <button className="submit-button" type="submit">
-            Cadastrar Ponto de Coleta
+            {isEditing ? "Atualizar Ponto de Coleta" : "Cadastrar Ponto de Coleta"}
           </button>
         </form>
       </section>
@@ -109,6 +140,10 @@ const CadPontosColeta = () => {
                 <strong>{ponto.nome}</strong> - {ponto.endereco} <br />
                 <em>CEP: {ponto.cep}</em> <br />
                 <em>Horário: {ponto.horario}</em>
+                <div className="actions">
+                  <button onClick={() => handleEdit(ponto.id)}>Editar</button>
+                  <button onClick={() => handleDelete(ponto.id)}>Excluir</button>
+                </div>
               </li>
             ))
           ) : (

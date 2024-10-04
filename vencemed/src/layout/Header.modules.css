@@ -16,7 +16,7 @@ header .top-section {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 10px;
+    padding: 0 20px;
 }
 
 img {
@@ -142,4 +142,17 @@ form {
 
 .Admin{
     color: #333;
+}
+
+/* Estilo do login */
+.login-prompt {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
 }
