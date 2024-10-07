@@ -4,6 +4,7 @@ import "../layout/Perfil.modules.css";
 function Perfil() {
   const [userData, setUserData] = useState({
     email: '',
+    senha: '',
     telefone: '',
     cep: '',
     cpf: '',
@@ -45,6 +46,17 @@ function Perfil() {
             onChange={handleChange}
           />
         </div>
+
+        <div className="info-item">
+          <label>Senha:</label>
+          <input
+            type="sen"
+            name="senha"
+            value={userData.senha}
+            onChange={handleChange}
+          />
+          </div>
+
         <div className="info-item">
           <label>Telefone:</label>
           <input
@@ -94,4 +106,4 @@ function Perfil() {
   );
 }
 
-export default Perfil;
+export default Perfil;

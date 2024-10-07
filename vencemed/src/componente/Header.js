@@ -86,7 +86,7 @@ function Header() {
               ) : (
                 <>
                   <li>
-                    <Link to="/perfil" onClick={() => setMenuOpen(false)}>Perfil</Link>
+                    <Link to="/Perfil" onClick={() => setMenuOpen(false)}>Perfil</Link>
                   </li>
                   <li>
                     <Link className="sair-link" onClick={() => { setSairConfirmOpen(true); setMenuOpen(false); }}>Sair</Link>
@@ -115,12 +115,12 @@ function Header() {
         <Modal isOpen={isLoginOpen} onClose={() => setLoginOpen(false)}>
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
-            <label>Email ou Nome de Usuário:</label>
+            <label>Email:</label>
             <input
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Digite seu email ou nome de usuário"
+              placeholder="Digite seu email"
               required
             />
             <label>Senha:</label>
@@ -193,4 +193,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header;

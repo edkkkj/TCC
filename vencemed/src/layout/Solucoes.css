@@ -1,24 +1,49 @@
-#solucoes {
-    max-width: 800px; /* Limita a largura do conteúdo */
-    margin: 0 auto; /* Centraliza o conteúdo */
-    padding: 20px; /* Adiciona espaço ao redor do conteúdo */
-    font-family: Arial, sans-serif; /* Define a fonte */
-    line-height: 1.6; /* Aumenta o espaçamento entre as linhas */
-}
-
-#solucoes h2 {
-    text-align: center; /* Centraliza o título */
-    margin-bottom: 20px; /* Espaço abaixo do título */
-}
-
-#solucoes p {
-    text-align: justify; /* Justifica o texto */
-    margin-bottom: 15px; /* Espaço entre os parágrafos */
-}
-
-hr {
-    border: none; /* Remove bordas padrão */
-    height: 2px; /* Define a altura da linha */
-    background-color: #ccc; /* Cor da linha */
-    margin: 20px 0; /* Espaço acima e abaixo da linha */
-}
+/* Estilo Principal */
+.home-container {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* Hero Section */
+  .hero-content {
+    margin: 0;
+    padding: 40px 20px;
+    background-image: url(../img/eee.jpg);
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+    right: 50%;
+  }
+  
+  .hero-content h1, .hero-content p {
+    color: #ffffff;
+  }
+  
+  /* Estilo do Conteúdo de Soluções */
+  .solucoes-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  .solucoes-content h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .solucoes-content p {
+    text-align: justify;
+    margin-bottom: 15px;
+  }
+  

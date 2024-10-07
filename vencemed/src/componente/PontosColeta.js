@@ -14,7 +14,13 @@ const PontosColeta = () => {
   }, []);
 
   return (
-    <div className="PontosColeta">
+      <div className="home-container">
+      <div className="hero-content">
+        <h1 className="hero-title">Pontos de Coleta</h1>
+        <p className="hero-description">
+        Descarte seu medicamento corretamente levando-a um ponto de coleta.
+        </p>
+      </div>
       <h1>Pontos de Coleta Cadastrados</h1>
       <section className="pontos-section">
         <ul className="pontos-list">
@@ -46,4 +52,4 @@ const PontosColeta = () => {
   );
 };
 
-export default PontosColeta;
+export default PontosColeta;

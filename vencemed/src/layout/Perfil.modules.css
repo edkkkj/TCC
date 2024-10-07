@@ -53,7 +53,7 @@ input:focus {
   padding: 12px 25px; /* Maior padding no botão */
   border: none;
   border-radius: 8px; /* Arredondamento maior no botão */
-  background-color: #28a745; /* Cor verde para indicar sucesso/salvar */
+  background-color: #007BFF; /* Cor verde para indicar sucesso/salvar */
   color: white;
   cursor: pointer;
   font-size: 18px; /* Texto maior no botão */
@@ -63,11 +63,11 @@ input:focus {
 }
 
 .save-button:hover {
-  background-color: #218838; /* Efeito hover verde mais escuro */
+  background-color: #007BFF; /* Efeito hover verde mais escuro */
 }
 
 .save-button:active {
-  background-color: #1e7e34; /* Cor ao clicar no botão */
+  background-color: #007BFF; /* Cor ao clicar no botão */
 }
 
 @media (max-width: 500px) {
@@ -77,6 +77,6 @@ input:focus {
   }
 
   h2 {
-      font-size: 22px; /* Ajuste no tamanho da fonte do título */
-  }
+      font-size: 22px; /* Ajuste no tamanho da fonte do título */
+}
 }
