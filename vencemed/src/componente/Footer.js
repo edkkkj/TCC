@@ -19,9 +19,9 @@ function Footer() {
                         <FaFacebook />
                         <p>Nossa página no Facebook</p> {/* Descrição do Facebook */}
                     </div>
-                    <div className="icon-item">
+                    <div className="iconn-item">
                         <FaYoutube />
-                        <p>Nosso canal no YouTube</p> {/* Descrição do YouTube */}
+                        <p>Nossa página no YouTube</p> {/* Descrição do YouTube */}
                     </div>
                 </div>
             </div>

@@ -37,7 +37,7 @@
   padding: 0 20px;
 }
 
-.info-section p{
+.info-section p {
   text-align: left;
 }
 
@@ -46,21 +46,6 @@ hr {
   height: 2px;
   background-color: #ccc;
   margin: 20px 0;
-}
-
-/* Section exclusiva para a imagem */
-.imagem-section {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.impact-image {
-  width: 100%;
-  max-width: 800px;
-  max-height: 500px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Seção de Conteúdo Adicional */
@@ -87,5 +72,95 @@ hr {
 @media (min-width: 768px) {
   .impact-image {
     max-width: 1200px;
+  }
 }
+
+/* Estrutura da imagem central e laterais */
+.imagee-structure {
+  display: flex;
+  justify-content: center; /* Alinha as seções centrais e laterais */
+  align-items: flex-start; /* Alinha o conteúdo ao topo */
+  width: 100%;
+  padding: 0 20px; /* Espaços laterais */
+  box-sizing: border-box;
+  position: relative; /* Define um contexto para a imagem da onda */
+  color: white;
+
+}
+
+
+.side-section, .right-section {
+  width: 33.3%; /* Mude para porcentagem para melhor responsividade */
+  height: 400px;
+  padding: 20px; /* Adiciona espaço interno */
+  box-sizing: border-box; /* Garante que o padding não afete a largura total */
+  display: flex; /* Para usar flexbox */
+  flex-direction: column; /* Coloca os elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza o texto */
+}
+
+.side-section {
+  background-color: #ADD8E6;
+}
+
+.right-section {
+  background-color: #87CEFA;
+}
+
+.side-section h3 {
+  margin: 10px 0; /* Espaçamento em cima e embaixo dos títulos */
+}
+
+.side-section p{
+  margin: 10px 0; /* Espaçamento em cima e embaixo dos parágrafos */
+  flex: 1; /* Permite que os parágrafos ocupem o espaço restante */
+  display: flex; /* Para usar flexbox nos parágrafos */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.right-section {
+  background-color: #87CEFA;
+  display: flex;
+  flex-direction: column; /* Mantém os elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza o texto */
+  height: 400px; /* Mantém a altura */
+}
+
+.right-section h3 {
+  margin: 10px 0 15px; /* Espaçamento em cima e embaixo do título, com 15px abaixo */
+}
+
+.right-section p {
+  margin: 0; /* Remove a margem padrão */
+  padding: 40px 30px 1px; /* Adiciona padding inferior para espaço */
+  line-height: 1.5; /* Mantém um espaçamento de linha consistente */
+}
+
+
+.center-image {
+  background-image: url('../img/lixo.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.3vw;
+  height: 400px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* Imagem de onda */
+.waves-image {
+  position: absolute; /* Mantém a imagem em relação ao contêiner pai */
+  top: 330px; /* Ajusta a posição para descer um pouco mais e não sobrepor os ícones */
+  left: 50%; /* Alinha a imagem ao centro horizontalmente */
+  width: 100vw; /* Define a largura para ocupar 100% da viewport */
+  max-width: none; /* Remove quaisquer restrições de largura máxima */
+  height: auto; /* Mantém a proporção da altura da imagem */
+  z-index: 0; /* Ajuste o z-index para que a imagem fique atrás do conteúdo acima */
+  pointer-events: none; /* Evita interferir com interações do usuário */
+  transform: translateX(-50%); /* Centraliza a imagem horizontalmente */
 }

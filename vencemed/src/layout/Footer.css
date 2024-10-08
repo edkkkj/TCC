@@ -48,6 +48,15 @@ footer h3 {
   margin-left: 10px; /* Espaço entre o ícone e a descrição */
 }
 
+.iconn-item{
+  display: flex;
+  align-items: left; /* Alinha o ícone e o texto na mesma linha */
+  font-size: 32px;
+}
+
+.iconn-item p {
+  margin-left: 10px; /* Espaço entre o ícone e a descrição */
+}
 footer p {
   font-size: 0.8rem;
   margin-top: 5px;
