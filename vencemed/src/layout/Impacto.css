@@ -157,7 +157,7 @@ hr {
 /* Imagem de onda */
 .waves-image {
   position: absolute; /* Mantém a imagem em relação ao contêiner pai */
-  top: 360px; /* Ajusta a posição para descer um pouco mais e não sobrepor os ícones */
+  top: 305px; /* Ajusta a posição para descer um pouco mais e não sobrepor os ícones */
   left: 50%; /* Alinha a imagem ao centro horizontalmente */
   width: 100vw; /* Define a largura para ocupar 100% da viewport */
   max-width: none; /* Remove quaisquer restrições de largura máxima */

@@ -15,23 +15,23 @@ function Header() {
   const [telefone, setTelefone] = useState('');
   const [cep, setCep] = useState('');
   const [cpf, setCpf] = useState('');
-  const [nomeUsuario, setNomeUsuario] = useState(''); // Novo estado para nome de usuário
+  const [nomeUsuario, setNomeUsuario] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    const user = JSON.parse(localStorage.getItem("usuarioLogado"));
     if (user) {
-      setLoggedInUser(user);
+      setUsuarioLogado(user);
       setIsAdmin(user.isAdmin);
     }
   }, []);
 
   const handleConfirmSair = () => {
     setSairConfirmOpen(false);
-    setLoggedInUser(null);
+    setUsuarioLogado(null);
     setIsAdmin(false);
-    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("usuarioLogado");
     console.log("Usuário deslogado");
   };
 
@@ -43,26 +43,34 @@ function Header() {
       telefone,
       cep,
       cpf,
-      nomeUsuario, // Incluindo nome de usuário
+      nomeUsuario,
       isAdmin,
     };
-    localStorage.setItem("loggedInUser", JSON.stringify(newUser));
-    setLoggedInUser(newUser);
+
+    const usuariosExistentes = JSON.parse(localStorage.getItem("usuarios")) || [];
+    usuariosExistentes.push(newUser);
+    localStorage.setItem("usuarios", JSON.stringify(usuariosExistentes));
+    localStorage.setItem("usuarioLogado", JSON.stringify(newUser));
+
+    setUsuarioLogado(newUser);
     setEmail('');
     setSenha('');
     setTelefone('');
     setCep('');
     setCpf('');
-    setNomeUsuario(''); // Limpar o campo de nome de usuário após o cadastro
+    setNomeUsuario('');
     setIsAdmin(false);
     setCadastroOpen(false);
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const storedUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (storedUser && storedUser.email === email && storedUser.senha === senha) {
-      setLoggedInUser(storedUser);
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuarioEncontrado = usuarios.find(user => user.email === email && user.senha === senha);
+
+    if (usuarioEncontrado) {
+      setUsuarioLogado(usuarioEncontrado);
+      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
       setLoginOpen(false);
     } else {
       alert("Email ou senha incorretos");
@@ -77,7 +85,7 @@ function Header() {
           <VscAccount className="account-icon" />
           {menuOpen && (
             <ul className="dropdown-menu">
-              {!loggedInUser ? (
+              {!usuarioLogado ? (
                 <>
                   <li>
                     <Link onClick={() => { setLoginOpen(true); setMenuOpen(false); }}>Login</Link>

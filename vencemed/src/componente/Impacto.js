@@ -13,13 +13,10 @@ function Impacto() {
       </div>
 
       <div className="info-section">
-        <p>
-          Jogar esses medicamentos no lixo comum ou na descarga sanitária pode liberar substâncias químicas nocivas ao solo, à fauna e à saúde pública, afetando qualquer um que entrar em contato com áreas contaminadas.
-        </p>
+        <h2>
+        Perigos do Descarte Inadequado de Medicamentos: Impactos no Meio Ambiente e na Saúde Pública
+        </h2>
         <hr />
-        <p>
-          Ao ser descartado pela rede de esgoto, os medicamentos também afetam a qualidade da água. Diferentes tipos de medicamentos apresentam riscos variados, dependendo de suas características, como inflamabilidade, corrosividade, reatividade e toxicidade.
-        </p>
       
       </div>
 
