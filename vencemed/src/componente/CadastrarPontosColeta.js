@@ -11,6 +11,7 @@ const CadPontosColeta = () => {
     endereco: "",
     cep: "",
     horario: "",
+    fazAgendamento: "",
   });
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -29,6 +30,10 @@ const CadPontosColeta = () => {
 
   const handleChange = (e) => {
     setNovoPonto({ ...novoPonto, [e.target.name]: e.target.value });
+  };
+
+  const handleRadioChange = (e) => {
+    setNovoPonto({ ...novoPonto, fazAgendamento: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -53,7 +58,7 @@ const CadPontosColeta = () => {
       alert("Ponto de coleta cadastrado com sucesso!");
     }
 
-    setNovoPonto({ nome: "", endereco: "", cep: "", horario: "" });
+    setNovoPonto({ nome: "", endereco: "", cep: "", horario: "", fazAgendamento: "" });
   };
 
   const handleEdit = (id) => {
@@ -63,6 +68,7 @@ const CadPontosColeta = () => {
       endereco: ponto.endereco,
       cep: ponto.cep,
       horario: ponto.horario,
+      fazAgendamento: ponto.fazAgendamento,
     });
     setIsEditing(true);
     setEditId(id);
@@ -125,6 +131,38 @@ const CadPontosColeta = () => {
               placeholder="Ex: Segunda a Sexta, 9h às 18h"
             />
           </div>
+          <div className="input-group">
+            <label>Este ponto de coleta faz agendamento?</label>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label>
+                <input
+                  type="radio"
+                  name="fazAgendamento"
+                  value="sim"
+                  checked={novoPonto.fazAgendamento === "sim"}
+                  onChange={handleRadioChange}
+                />
+                Sim
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="fazAgendamento"
+                  value="não"
+                  checked={novoPonto.fazAgendamento === "não"}
+                  onChange={handleRadioChange}
+                />
+                Não
+              </label>
+            </div>
+            <p>
+              {novoPonto.fazAgendamento === "sim"
+                ? "Se sim, este ponto de coleta faz agendamento."
+                : novoPonto.fazAgendamento === "não"
+                ? "Se não, este ponto de coleta não faz agendamento."
+                : ""}
+            </p>
+          </div>
           <button className="submit-button" type="submit">
             {isEditing ? "Atualizar Ponto de Coleta" : "Cadastrar Ponto de Coleta"}
           </button>
@@ -139,7 +177,9 @@ const CadPontosColeta = () => {
               <li key={ponto.id}>
                 <strong>{ponto.nome}</strong> - {ponto.endereco} <br />
                 <em>CEP: {ponto.cep}</em> <br />
-                <em>Horário: {ponto.horario}</em>
+                <em>Horário: {ponto.horario}</em> <br />
+                <em>{ponto.fazAgendamento === "sim" ? "Este Ponto de Coleta faz agendamento"
+                 : "Este Ponto de Coleta não faz agendamento"}</em>
                 <div className="actions">
                   <button onClick={() => handleEdit(ponto.id)}>Editar</button>
                   <button onClick={() => handleDelete(ponto.id)}>Excluir</button>

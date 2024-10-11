@@ -89,7 +89,7 @@ hr {
 }
 
 
-.side-section, .right-section {
+.sides-section, .rights-section {
   width: 33.3%; /* Mude para porcentagem para melhor responsividade */
   height: 400px;
   padding: 20px; /* Adiciona espaço interno */
@@ -100,26 +100,27 @@ hr {
   text-align: center; /* Centraliza o texto */
 }
 
-.side-section {
+.sides-section {
   background-color: #ADD8E6;
 }
 
-.right-section {
+.rights-section {
   background-color: #87CEFA;
 }
 
-.side-section h3 {
-  margin: 10px 0; /* Espaçamento em cima e embaixo dos títulos */
+.sides-section h3 {
+  margin: 10px 0 1px; /* Espaçamento em cima e embaixo dos títulos */
+  padding-top: 40px;
 }
 
-.side-section p{
-  margin: 10px 0; /* Espaçamento em cima e embaixo dos parágrafos */
-  flex: 1; /* Permite que os parágrafos ocupem o espaço restante */
+.sides-section p{
+  margin: 0; /* Espaçamento em cima e embaixo dos parágrafos */
   display: flex; /* Para usar flexbox nos parágrafos */
   align-items: center; /* Centraliza verticalmente */
+  padding-top: 40px;
 }
 
-.right-section {
+.rights-section {
   background-color: #87CEFA;
   display: flex;
   flex-direction: column; /* Mantém os elementos em coluna */
@@ -128,13 +129,14 @@ hr {
   height: 400px; /* Mantém a altura */
 }
 
-.right-section h3 {
-  margin: 10px 0 15px; /* Espaçamento em cima e embaixo do título, com 15px abaixo */
+.rights-section h3 {
+  margin: 0; /* Espaçamento em cima e embaixo do título, com 15px abaixo */
+  padding-top: 20px;
 }
 
-.right-section p {
+.rights-section p {
   margin: 0; /* Remove a margem padrão */
-  padding: 40px 30px 1px; /* Adiciona padding inferior para espaço */
+  padding: 40px 10px 1px; /* Adiciona padding inferior para espaço */
   line-height: 1.5; /* Mantém um espaçamento de linha consistente */
 }
 
@@ -155,7 +157,7 @@ hr {
 /* Imagem de onda */
 .waves-image {
   position: absolute; /* Mantém a imagem em relação ao contêiner pai */
-  top: 330px; /* Ajusta a posição para descer um pouco mais e não sobrepor os ícones */
+  top: 360px; /* Ajusta a posição para descer um pouco mais e não sobrepor os ícones */
   left: 50%; /* Alinha a imagem ao centro horizontalmente */
   width: 100vw; /* Define a largura para ocupar 100% da viewport */
   max-width: none; /* Remove quaisquer restrições de largura máxima */

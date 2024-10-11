@@ -41,7 +41,7 @@
   
   button.submit-button {
     padding: 10px 15px;
-    background-color: #4CAF50;
+    background-color: #ccc;
     color: white;
     border: none;
     border-radius: 5px;
@@ -91,4 +91,16 @@
   .actions button:nth-child(2):hover {
     background-color: #cc0000;
   }
+
+  .radio-group {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
   

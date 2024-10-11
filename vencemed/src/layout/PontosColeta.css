@@ -31,7 +31,7 @@ h1 {
   text-align: center;
 }
 
-button {
+.cadastro-link button {
   padding: 10px 20px;
   background-color: #007BFF;
   color: white;
@@ -40,7 +40,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.cadastro-link button:hover {
   background-color: #0056b3; /* Efeito de hover */
 }
 

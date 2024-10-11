@@ -15,6 +15,7 @@ function Header() {
   const [telefone, setTelefone] = useState('');
   const [cep, setCep] = useState('');
   const [cpf, setCpf] = useState('');
+  const [nomeUsuario, setNomeUsuario] = useState(''); // Novo estado para nome de usuário
   const [isAdmin, setIsAdmin] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
 
@@ -42,6 +43,7 @@ function Header() {
       telefone,
       cep,
       cpf,
+      nomeUsuario, // Incluindo nome de usuário
       isAdmin,
     };
     localStorage.setItem("loggedInUser", JSON.stringify(newUser));
@@ -51,6 +53,7 @@ function Header() {
     setTelefone('');
     setCep('');
     setCpf('');
+    setNomeUsuario(''); // Limpar o campo de nome de usuário após o cadastro
     setIsAdmin(false);
     setCadastroOpen(false);
   };
@@ -141,6 +144,14 @@ function Header() {
         <Modal isOpen={isCadastroOpen} onClose={() => setCadastroOpen(false)}>
           <h2>Cadastro</h2>
           <form onSubmit={handleCadastro} className="form-cadastro">
+            <label>Nome de Usuário:</label>
+            <input
+              type="text"
+              value={nomeUsuario}
+              onChange={(e) => setNomeUsuario(e.target.value)}
+              placeholder="Digite seu nome de usuário"
+              required
+            />
             <label>Email:</label>
             <input
               type="email"
@@ -193,4 +204,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header;

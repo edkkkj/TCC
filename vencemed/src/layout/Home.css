@@ -101,7 +101,7 @@ p {
 }
 
 .right-section {
-  background-color: #84fa84;
+  background-color: #87CEFA;
 }
 
 .right-section h3 {
@@ -111,7 +111,7 @@ p {
   left: -50px;
 }
 
-.center-image {
+.centers-image {
   background-image: url('../img/remedios.png');
   display: flex;
   justify-content: center;

@@ -50,7 +50,7 @@ function Home() {
           <h3>importância de Descartar corretamente</h3>
         </div>
 
-        <div className="center-image">
+        <div className="centers-image">
         </div>
 
         <div className="right-section">

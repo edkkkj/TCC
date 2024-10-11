@@ -14,11 +14,11 @@ const PontosColeta = () => {
   }, []);
 
   return (
-      <div className="home-container">
+    <div className="home-container">
       <div className="hero-content">
         <h1 className="hero-title">Pontos de Coleta</h1>
         <p className="hero-description">
-        Descarte seu medicamento corretamente levando-a um ponto de coleta.
+          Descarte seu medicamento corretamente levando-a um ponto de coleta.
         </p>
       </div>
       <h1>Pontos de Coleta Cadastrados</h1>
@@ -29,7 +29,12 @@ const PontosColeta = () => {
               <li key={ponto.id}>
                 <strong>{ponto.nome}</strong> - {ponto.endereco} <br />
                 <em>CEP: {ponto.cep}</em> <br />
-                <em>Horário: {ponto.horario}</em>
+                <em>Horário: {ponto.horario}</em> <br />
+                <em>
+                  {ponto.fazAgendamento === "sim"
+                    ? "Este ponto de coleta faz agendamento."
+                    : "Este ponto de coleta não faz agendamento."}
+                </em>
               </li>
             ))
           ) : (
@@ -52,4 +57,4 @@ const PontosColeta = () => {
   );
 };
 
-export default PontosColeta;
+export default PontosColeta;
