@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ModalContext } from "../componente/ModalContext"; // Importando o contexto
 import Modal from '../componente/Modal';
 import ConfirmacaoSair from '../componente/ConfirmacaoSair';
+import axios from 'axios';
 import "../layout/Header.modules.css";
 import { VscAccount } from 'react-icons/vsc';
 
@@ -38,7 +39,7 @@ function Header() {
     console.log("Usuário deslogado");
   };
 
-  const handleCadastro = (e) => {
+  const handleCadastro = async (e) => {
     e.preventDefault();
     const newUser = {
       email,
@@ -50,39 +51,49 @@ function Header() {
       isAdmin,
     };
 
-    const usuariosExistentes = JSON.parse(localStorage.getItem("usuarios")) || [];
-    usuariosExistentes.push(newUser);
-    localStorage.setItem("usuarios", JSON.stringify(usuariosExistentes));
-    localStorage.setItem("usuarioLogado", JSON.stringify(newUser));
-
-    setUsuarioLogado(newUser);
-    setEmail('');
-    setSenha('');
-    setTelefone('');
-    setCep('');
-    setCpf('');
-    setNomeUsuario('');
-    setIsAdmin(false);
-    setCadastroOpen(false);
+    try {
+      await axios.post('http://localhost:8080/clientes', newUser); // Ajuste a URL conforme necessário
+      localStorage.setItem("usuarioLogado", JSON.stringify(newUser)); // Salva no localStorage para persistência
+      setUsuarioLogado(newUser);
+      alert("Cadastro realizado com sucesso!");
+      setCadastroOpen(false);
+    } catch (error) {
+      console.error("Erro ao cadastrar o usuário:", error);
+      alert("Erro ao cadastrar. Tente novamente.");
+    } finally {
+      // Limpa os campos após o cadastro
+      setEmail('');
+      setSenha('');
+      setTelefone('');
+      setCep('');
+      setCpf('');
+      setNomeUsuario('');
+      setIsAdmin(false);
+    }
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault(); // Impede o envio padrão do formulário
     if (email.trim() === '' || senha.trim() === '') {
       alert("Preencha todos os campos!");
       return;
     }
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const usuarioEncontrado = usuarios.find(user => user.email === email && user.senha === senha);
+    try {
+      const response = await axios.post('http://localhost:8080/clientes/login', { email, senha }); // Ajuste a URL conforme necessário
+      const usuarioEncontrado = response.data;
 
-    if (usuarioEncontrado) {
-      setUsuarioLogado(usuarioEncontrado);
-      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
-      closeLoginModal(); // Fecha o modal após login
-      alert("Login realizado com sucesso!");
-    } else {
-      alert("Email ou senha incorretos");
+      if (usuarioEncontrado) {
+        setUsuarioLogado(usuarioEncontrado);
+        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+        closeLoginModal(); // Fecha o modal após login
+        alert("Login realizado com sucesso!");
+      } else {
+        alert("Email ou senha incorretos");
+      }
+    } catch (error) {
+      console.error("Erro ao realizar login:", error);
+      alert("Erro ao realizar login. Verifique seu email e senha.");
     }
   };
 

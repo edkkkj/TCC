@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../layout/CadPontosColeta.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Importa o axios para realizar as requisições
 
 const CadPontosColeta = () => {
-  const [pontos, setPontos] = useState(() => {
-    return JSON.parse(localStorage.getItem("pontosDeColeta")) || [];
-  });
+  const [pontos, setPontos] = useState([]);
   const [novoPonto, setNovoPonto] = useState({
     nome: "",
     endereco: "",
@@ -18,15 +17,29 @@ const CadPontosColeta = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
+  // Verifica se o usuário logado é administrador
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     if (loggedInUser && loggedInUser.isAdmin) {
       setIsAdmin(true);
     } else {
-      alert('Apenas administradores podem acessar esta página.');
-      navigate('/');
+      alert("Apenas administradores podem acessar esta página.");
+      navigate("/");
     }
   }, [navigate]);
+
+  // Função para carregar os pontos de coleta do backend
+  useEffect(() => {
+    const fetchPontosColeta = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/pontos-coleta");
+        setPontos(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar pontos de coleta", error);
+      }
+    };
+    fetchPontosColeta();
+  }, []);
 
   const handleChange = (e) => {
     setNovoPonto({ ...novoPonto, [e.target.name]: e.target.value });
@@ -36,29 +49,38 @@ const CadPontosColeta = () => {
     setNovoPonto({ ...novoPonto, fazAgendamento: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Função para cadastrar ou editar um ponto de coleta
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isEditing) {
-      const pontosAtualizados = pontos.map((ponto) =>
-        ponto.id === editId ? { ...ponto, ...novoPonto } : ponto
-      );
-      setPontos(pontosAtualizados);
-      localStorage.setItem("pontosDeColeta", JSON.stringify(pontosAtualizados));
-      setIsEditing(false);
-      setEditId(null);
-      alert("Ponto de coleta atualizado com sucesso!");
+      try {
+        await axios.put(`http://localhost:8080/pontos-coleta/${editId}`, novoPonto);        alert("Ponto de coleta atualizado com sucesso!");
+      } catch (error) {
+        console.error("Erro ao atualizar ponto de coleta", error);
+        alert("Erro ao atualizar ponto de coleta.");
+      }
     } else {
-      const novoPontoDeColeta = {
-        ...novoPonto,
-        id: new Date().getTime(),
-      };
-      const pontosAtualizados = [...pontos, novoPontoDeColeta];
-      setPontos(pontosAtualizados);
-      localStorage.setItem("pontosDeColeta", JSON.stringify(pontosAtualizados));
-      alert("Ponto de coleta cadastrado com sucesso!");
+      try {
+        await axios.post("http://localhost:8080/pontos-coleta", novoPonto);
+        alert("Ponto de coleta cadastrado com sucesso!");
+      } catch (error) {
+        console.error("Erro ao cadastrar ponto de coleta", error);
+        alert("Erro ao cadastrar ponto de coleta.");
+      }
     }
 
+    // Limpa o formulário
     setNovoPonto({ nome: "", endereco: "", cep: "", horario: "", fazAgendamento: "" });
+    setIsEditing(false);
+    setEditId(null);
+
+    // Recarrega os pontos de coleta
+    try {
+      const response = await axios.get("http://localhost:8080/pontos-coleta");
+      setPontos(response.data);
+    } catch (error) {
+      console.error("Erro ao buscar pontos de coleta", error);
+    }
   };
 
   const handleEdit = (id) => {
@@ -74,11 +96,19 @@ const CadPontosColeta = () => {
     setEditId(id);
   };
 
-  const handleDelete = (id) => {
-    const pontosAtualizados = pontos.filter((ponto) => ponto.id !== id);
-    setPontos(pontosAtualizados);
-    localStorage.setItem("pontosDeColeta", JSON.stringify(pontosAtualizados));
-    alert("Ponto de coleta excluído com sucesso!");
+  // Função para deletar um ponto de coleta
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/pontos-coleta/${id}`);
+      alert("Ponto de coleta excluído com sucesso!");
+
+      // Recarrega os pontos de coleta
+      const response = await axios.get("http://localhost:8080/pontos-coleta");
+      setPontos(response.data);
+    } catch (error) {
+      console.error("Erro ao excluir ponto de coleta", error);
+      alert("Erro ao excluir ponto de coleta.");
+    }
   };
 
   if (!isAdmin) {
@@ -155,13 +185,6 @@ const CadPontosColeta = () => {
                 Não
               </label>
             </div>
-            <p>
-              {novoPonto.fazAgendamento === "sim"
-                ? "Se sim, este ponto de coleta faz agendamento."
-                : novoPonto.fazAgendamento === "não"
-                ? "Se não, este ponto de coleta não faz agendamento."
-                : ""}
-            </p>
           </div>
           <button className="submit-button" type="submit">
             {isEditing ? "Atualizar Ponto de Coleta" : "Cadastrar Ponto de Coleta"}
@@ -178,8 +201,11 @@ const CadPontosColeta = () => {
                 <strong>{ponto.nome}</strong> - {ponto.endereco} <br />
                 <em>CEP: {ponto.cep}</em> <br />
                 <em>Horário: {ponto.horario}</em> <br />
-                <em>{ponto.fazAgendamento === "sim" ? "Este Ponto de Coleta faz agendamento"
-                 : "Este Ponto de Coleta não faz agendamento"}</em>
+                <em>
+                  {ponto.fazAgendamento === "sim"
+                    ? "Este Ponto de Coleta faz agendamento"
+                    : "Este Ponto de Coleta não faz agendamento"}
+                </em>
                 <div className="actions">
                   <button onClick={() => handleEdit(ponto.id)}>Editar</button>
                   <button onClick={() => handleDelete(ponto.id)}>Excluir</button>
