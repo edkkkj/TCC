@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "../layout/PontosColeta.css"; // Arquivo de estilo CSS para melhorar o visual
+import axios from "axios"; // Certifique-se de instalar o axios
 
 const PontosColeta = () => {
-  const [pontos, setPontos] = useState(() => {
-    return JSON.parse(localStorage.getItem("pontosDeColeta")) || [];
-  });
+  const [pontos, setPontos] = useState([]);
 
   const [isAdmin, setIsAdmin] = useState(false);
 
+  // Carregar os pontos de coleta do backend
+  useEffect(() => {
+    const fetchPontosColeta = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/pontos-coleta"); // Ajuste a URL para seu backend
+        setPontos(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar pontos de coleta", error);
+      }
+    };
+
+    fetchPontosColeta();
+  }, []);
+
+  // Verificar se o usuário logado é admin
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("usuarioLogado"));
-    
+
     if (user && user.isAdmin) {
       setIsAdmin(true); // Define isAdmin como true apenas se o usuário estiver logado e for admin
     } else {
@@ -23,7 +37,7 @@ const PontosColeta = () => {
       <div className="hero-content">
         <h1 className="hero-title">Pontos de Coleta</h1>
         <p className="hero-description">
-          Descarte seu medicamento corretamente levando-a um ponto de coleta.
+          Descarte seu medicamento corretamente levando-o a um ponto de coleta.
         </p>
       </div>
       <h1>Pontos de Coleta Cadastrados</h1>

@@ -17,6 +17,7 @@ const CadPontosColeta = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
+  
   // Verifica se o usuário logado é administrador
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -54,7 +55,8 @@ const CadPontosColeta = () => {
     e.preventDefault();
     if (isEditing) {
       try {
-        await axios.put(`http://localhost:8080/pontos-coleta/${editId}`, novoPonto);        alert("Ponto de coleta atualizado com sucesso!");
+        await axios.put(`http://localhost:8080/pontos-coleta/${editId}`, novoPonto);
+        alert("Ponto de coleta atualizado com sucesso!");
       } catch (error) {
         console.error("Erro ao atualizar ponto de coleta", error);
         alert("Erro ao atualizar ponto de coleta.");
