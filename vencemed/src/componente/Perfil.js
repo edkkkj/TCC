@@ -13,7 +13,7 @@ function Perfil() {
 
   useEffect(() => {
     // Simula carregamento dos dados do perfil do localStorage
-    const storedUserData = JSON.parse(localStorage.getItem('loggedInUser'));
+    const storedUserData = JSON.parse(localStorage.getItem('usuarioLogado'));
     if (storedUserData) {
       setUserData(storedUserData);
     }
@@ -29,7 +29,7 @@ function Perfil() {
 
   const handleSave = () => {
     // Atualiza os dados do perfil no localStorage
-    localStorage.setItem('loggedInUser', JSON.stringify(userData));
+    localStorage.setItem('usuarioLogado', JSON.stringify(userData));
     alert('Perfil atualizado com sucesso!');
   };
 

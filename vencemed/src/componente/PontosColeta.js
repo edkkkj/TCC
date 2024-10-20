@@ -9,8 +9,13 @@ const PontosColeta = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("loggedInUser"));
-    setIsAdmin(user ? user.isAdmin : false); // Verifica se o usuário logado é admin
+    const user = JSON.parse(localStorage.getItem("usuarioLogado"));
+    
+    if (user && user.isAdmin) {
+      setIsAdmin(true); // Define isAdmin como true apenas se o usuário estiver logado e for admin
+    } else {
+      setIsAdmin(false); // Garante que não será admin se não estiver logado ou não for admin
+    }
   }, []);
 
   return (
@@ -43,6 +48,7 @@ const PontosColeta = () => {
         </ul>
       </section>
 
+      {/* Verifica se o usuário está logado como admin para exibir o botão */}
       {isAdmin && (
         <div className="cadastro-link">
           <p>

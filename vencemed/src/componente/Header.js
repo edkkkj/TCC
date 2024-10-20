@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { ModalContext } from "../componente/ModalContext"; // Importando o contexto
 import Modal from '../componente/Modal';
 import ConfirmacaoSair from '../componente/ConfirmacaoSair';
 import "../layout/Header.modules.css";
@@ -7,7 +8,6 @@ import { VscAccount } from 'react-icons/vsc';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isLoginOpen, setLoginOpen] = useState(false);
   const [isCadastroOpen, setCadastroOpen] = useState(false);
   const [isSairConfirmOpen, setSairConfirmOpen] = useState(false);
   const [email, setEmail] = useState('');
@@ -18,6 +18,9 @@ function Header() {
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+
+  // Acessando o contexto de modal para abrir o modal de login
+  const { openLoginModal, closeLoginModal, isLoginModalOpen } = useContext(ModalContext);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("usuarioLogado"));
@@ -64,17 +67,28 @@ function Header() {
   };
 
   const handleLogin = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Impede o envio padrão do formulário
+    if (email.trim() === '' || senha.trim() === '') {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     const usuarioEncontrado = usuarios.find(user => user.email === email && user.senha === senha);
 
     if (usuarioEncontrado) {
       setUsuarioLogado(usuarioEncontrado);
       localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
-      setLoginOpen(false);
+      closeLoginModal(); // Fecha o modal após login
+      alert("Login realizado com sucesso!");
     } else {
       alert("Email ou senha incorretos");
     }
+  };
+
+  const openLoginModalHandler = () => {
+    openLoginModal();
+    setMenuOpen(false); // Fecha o menu ao abrir o modal de login
   };
 
   return (
@@ -88,7 +102,7 @@ function Header() {
               {!usuarioLogado ? (
                 <>
                   <li>
-                    <Link onClick={() => { setLoginOpen(true); setMenuOpen(false); }}>Login</Link>
+                    <Link to="#" onClick={openLoginModalHandler}>Login</Link>
                   </li>
                   <li>
                     <Link onClick={() => { setCadastroOpen(true); setMenuOpen(false); }}>Cadastro</Link>
@@ -122,30 +136,28 @@ function Header() {
       </nav>
 
       {/* Modal de Login */}
-      {isLoginOpen && (
-        <Modal isOpen={isLoginOpen} onClose={() => setLoginOpen(false)}>
-          <h2>Login</h2>
-          <form onSubmit={handleLogin}>
-            <label>Email:</label>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Digite seu email"
-              required
-            />
-            <label>Senha:</label>
-            <input
-              type="password"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              placeholder="Digite sua senha"
-              required
-            />
-            <button type="submit" className="login-button">Entrar</button>
-          </form>
-        </Modal>
-      )}
+      <Modal isOpen={isLoginModalOpen} onClose={closeLoginModal}>
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <label>Email:</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Digite seu email"
+            required
+          />
+          <label>Senha:</label>
+          <input
+            type="password"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            placeholder="Digite sua senha"
+            required
+          />
+          <button type="submit" className="login-button">Entrar</button>
+        </form>
+      </Modal>
 
       {/* Modal de Cadastro */}
       {isCadastroOpen && (
