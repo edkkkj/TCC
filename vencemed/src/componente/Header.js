@@ -52,7 +52,7 @@ function Header() {
     };
 
     try {
-      await axios.post('http://localhost:8080/clientes', newUser); // Ajuste a URL conforme necessário
+      await axios.post('http://localhost:8080/usuarios', newUser); // Ajuste a URL conforme necessário
       localStorage.setItem("usuarioLogado", JSON.stringify(newUser)); // Salva no localStorage para persistência
       setUsuarioLogado(newUser);
       alert("Cadastro realizado com sucesso!");
@@ -80,7 +80,7 @@ function Header() {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/clientes/login', { email, senha }); // Ajuste a URL conforme necessário
+      const response = await axios.post('http://localhost:8080/usuarios/login', { email, senha }); // Ajuste a URL conforme necessário
       const usuarioEncontrado = response.data;
 
       if (usuarioEncontrado) {
