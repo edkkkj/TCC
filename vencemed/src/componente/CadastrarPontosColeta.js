@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../layout/CadPontosColeta.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Importa o axios para realizar as requisições
+import axios from "axios";
 
 const CadPontosColeta = () => {
   const [pontos, setPontos] = useState([]);
@@ -10,15 +10,13 @@ const CadPontosColeta = () => {
     endereco: "",
     cep: "",
     horario: "",
-    fazAgendamento: "",
+    fazAgendamento: false, // Inicializa como booleano
   });
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
-  
-  // Verifica se o usuário logado é administrador
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     if (loggedInUser && loggedInUser.isAdmin) {
@@ -29,7 +27,6 @@ const CadPontosColeta = () => {
     }
   }, [navigate]);
 
-  // Função para carregar os pontos de coleta do backend
   useEffect(() => {
     const fetchPontosColeta = async () => {
       try {
@@ -47,41 +44,36 @@ const CadPontosColeta = () => {
   };
 
   const handleRadioChange = (e) => {
-    setNovoPonto({ ...novoPonto, fazAgendamento: e.target.value });
+    setNovoPonto({ ...novoPonto, fazAgendamento: e.target.value === "true" });
   };
+  
 
-  // Função para cadastrar ou editar um ponto de coleta
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      try {
-        await axios.put(`http://localhost:8080/pontos-coleta/${editId}`, novoPonto);
-        alert("Ponto de coleta atualizado com sucesso!");
-      } catch (error) {
-        console.error("Erro ao atualizar ponto de coleta", error);
-        alert("Erro ao atualizar ponto de coleta.");
-      }
-    } else {
-      try {
-        await axios.post("http://localhost:8080/pontos-coleta", novoPonto);
-        alert("Ponto de coleta cadastrado com sucesso!");
-      } catch (error) {
-        console.error("Erro ao cadastrar ponto de coleta", error);
-        alert("Erro ao cadastrar ponto de coleta.");
-      }
-    }
-
-    // Limpa o formulário
-    setNovoPonto({ nome: "", endereco: "", cep: "", horario: "", fazAgendamento: "" });
-    setIsEditing(false);
-    setEditId(null);
-
-    // Recarrega os pontos de coleta
+    const pontoParaSalvar = { 
+      ...novoPonto, 
+      horarioFuncionamento: novoPonto.horario,
+      temServicosAgendamento: novoPonto.fazAgendamento // Envia para o backend
+    };
+    
     try {
+      if (isEditing) {
+        await axios.put(`http://localhost:8080/pontos-coleta/${editId}`, pontoParaSalvar);
+        alert("Ponto de coleta atualizado com sucesso!");
+      } else {
+        await axios.post("http://localhost:8080/pontos-coleta", pontoParaSalvar);
+        alert("Ponto de coleta cadastrado com sucesso!");
+      }
+  
+      setNovoPonto({ nome: "", endereco: "", cep: "", horario: "", fazAgendamento: false });
+      setIsEditing(false);
+      setEditId(null);
+  
       const response = await axios.get("http://localhost:8080/pontos-coleta");
       setPontos(response.data);
     } catch (error) {
-      console.error("Erro ao buscar pontos de coleta", error);
+      console.error("Erro ao salvar ponto de coleta", error);
+      alert("Erro ao salvar ponto de coleta.");
     }
   };
 
@@ -91,20 +83,18 @@ const CadPontosColeta = () => {
       nome: ponto.nome,
       endereco: ponto.endereco,
       cep: ponto.cep,
-      horario: ponto.horario,
-      fazAgendamento: ponto.fazAgendamento,
+      horario: ponto.horarioFuncionamento,
+      fazAgendamento: ponto.temServicosAgendamento, // Recebe o valor booleano
     });
     setIsEditing(true);
     setEditId(id);
   };
 
-  // Função para deletar um ponto de coleta
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8080/pontos-coleta/${id}`);
       alert("Ponto de coleta excluído com sucesso!");
 
-      // Recarrega os pontos de coleta
       const response = await axios.get("http://localhost:8080/pontos-coleta");
       setPontos(response.data);
     } catch (error) {
@@ -170,8 +160,8 @@ const CadPontosColeta = () => {
                 <input
                   type="radio"
                   name="fazAgendamento"
-                  value="sim"
-                  checked={novoPonto.fazAgendamento === "sim"}
+                  value="true" // Muda o valor para booleano
+                  checked={novoPonto.fazAgendamento === true}
                   onChange={handleRadioChange}
                 />
                 Sim
@@ -180,8 +170,8 @@ const CadPontosColeta = () => {
                 <input
                   type="radio"
                   name="fazAgendamento"
-                  value="não"
-                  checked={novoPonto.fazAgendamento === "não"}
+                  value="false" // Muda o valor para booleano
+                  checked={novoPonto.fazAgendamento === false}
                   onChange={handleRadioChange}
                 />
                 Não
@@ -195,30 +185,31 @@ const CadPontosColeta = () => {
       </section>
 
       <section className="pontos-section">
-        <h2>Pontos de Coleta Cadastrados</h2>
-        <ul className="pontos-list">
-          {pontos.length > 0 ? (
-            pontos.map((ponto) => (
-              <li key={ponto.id}>
-                <strong>{ponto.nome}</strong> - {ponto.endereco} <br />
-                <em>CEP: {ponto.cep}</em> <br />
-                <em>Horário: {ponto.horario}</em> <br />
-                <em>
-                  {ponto.fazAgendamento === "sim"
-                    ? "Este Ponto de Coleta faz agendamento"
-                    : "Este Ponto de Coleta não faz agendamento"}
-                </em>
-                <div className="actions">
-                  <button onClick={() => handleEdit(ponto.id)}>Editar</button>
-                  <button onClick={() => handleDelete(ponto.id)}>Excluir</button>
-                </div>
-              </li>
-            ))
-          ) : (
-            <p>Nenhum ponto de coleta cadastrado ainda.</p>
-          )}
-        </ul>
-      </section>
+  <h2>Pontos de Coleta Cadastrados</h2>
+  <ul className="pontos-list">
+    {pontos.length > 0 ? (
+      pontos.map((ponto) => (
+        <li key={ponto.id}>
+          <strong>{ponto.nome}</strong> - {ponto.endereco} <br />
+          <em>CEP: {ponto.cep}</em> <br />
+          <em>Horário: {ponto.horarioFuncionamento}</em> <br />
+          <em>
+            {ponto.temServicosAgendamento
+              ? "Este Ponto de Coleta faz agendamento" 
+              : "Este Ponto de Coleta não faz agendamento"} 
+          </em>
+          <div className="actions">
+            <button onClick={() => handleEdit(ponto.id)}>Editar</button>
+            <button onClick={() => handleDelete(ponto.id)}>Excluir</button>
+          </div>
+        </li>
+      ))
+    ) : (
+      <p>Nenhum ponto de coleta cadastrado ainda.</p>
+    )}
+  </ul>
+</section>
+
     </div>
   );
 };

@@ -40,7 +40,7 @@ const PontosColeta = () => {
           Descarte seu medicamento corretamente levando-o a um ponto de coleta.
         </p>
       </div>
-      <h1>Pontos de Coleta Cadastrados</h1>
+      <h1>Pontos de Coleta</h1>
       <section className="pontos-section">
         <ul className="pontos-list">
           {pontos.length > 0 ? (
@@ -48,9 +48,9 @@ const PontosColeta = () => {
               <li key={ponto.id}>
                 <strong>{ponto.nome}</strong> - {ponto.endereco} <br />
                 <em>CEP: {ponto.cep}</em> <br />
-                <em>Horário: {ponto.horario}</em> <br />
+                <em>Horário: {ponto.horarioFuncionamento}</em> <br />
                 <em>
-                  {ponto.fazAgendamento === "sim"
+                  {ponto.temServicosAgendamento 
                     ? "Este ponto de coleta faz agendamento."
                     : "Este ponto de coleta não faz agendamento."}
                 </em>
