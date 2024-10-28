@@ -137,6 +137,7 @@ const CadPontosColeta = () => {
             <input
               type="text"
               name="cep"
+              maxLength={8}
               value={novoPonto.cep}
               onChange={handleChange}
               required

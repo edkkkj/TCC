@@ -4,6 +4,7 @@ import "../layout/Perfil.modules.css";
 function Perfil() {
   const [userData, setUserData] = useState({
     id: null, // Certifique-se de que o ID é carregado
+    nome: '',
     email: '',
     senha: '',
     telefone: '',
@@ -60,6 +61,17 @@ function Perfil() {
     <div className="perfil-container">
       <h2>Meu Perfil</h2>
       <div className="perfil-info">
+      <div className="info-item">
+          <label>Nome:</label>
+          <input
+            type="text"
+            name="nome"
+            value={userData.nome}
+            onChange={handleChange}
+          />
+        </div>
+        
+        
         <div className="info-item">
           <label>Email:</label>
           <input
@@ -85,6 +97,7 @@ function Perfil() {
           <input
             type="tel"
             name="telefone"
+            maxLength={14}
             value={userData.telefone}
             onChange={handleChange}
           />
@@ -95,6 +108,7 @@ function Perfil() {
           <input
             type="text"
             name="cep"
+            maxLength={8}
             value={userData.cep}
             onChange={handleChange}
           />
@@ -105,6 +119,7 @@ function Perfil() {
           <input
             type="text"
             name="cpf"
+            maxLength={11}
             value={userData.cpf}
             onChange={handleChange}
           />
@@ -134,3 +149,5 @@ function Perfil() {
 }
 
 export default Perfil;
+
+

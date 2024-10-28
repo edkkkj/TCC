@@ -11,12 +11,12 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isCadastroOpen, setCadastroOpen] = useState(false);
   const [isSairConfirmOpen, setSairConfirmOpen] = useState(false);
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [telefone, setTelefone] = useState('');
   const [cep, setCep] = useState('');
   const [cpf, setCpf] = useState('');
-  const [nomeUsuario, setNomeUsuario] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [usuarioLogado, setUsuarioLogado] = useState(null);
 
@@ -42,12 +42,12 @@ function Header() {
   const handleCadastro = async (e) => {
     e.preventDefault();
     const newUser = {
+      nome,
       email,
       senha,
       telefone,
       cep,
       cpf,
-      nomeUsuario,
       isAdmin,
     };
 
@@ -62,12 +62,12 @@ function Header() {
       alert("Erro ao cadastrar. Tente novamente.");
     } finally {
       // Limpa os campos após o cadastro
+      setNome('');
       setEmail('');
       setSenha('');
       setTelefone('');
       setCep('');
       setCpf('');
-      setNomeUsuario('');
       setIsAdmin(false);
     }
   };
@@ -178,8 +178,8 @@ function Header() {
             <label>Nome de Usuário:</label>
             <input
               type="text"
-              value={nomeUsuario}
-              onChange={(e) => setNomeUsuario(e.target.value)}
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
               placeholder="Digite seu nome de usuário"
               required
             />
@@ -203,6 +203,7 @@ function Header() {
             <input
               type="tel"
               value={telefone}
+              maxLength={14}
               onChange={(e) => setTelefone(e.target.value)}
               placeholder="Digite seu telefone"
               required
@@ -211,6 +212,7 @@ function Header() {
             <input
               type="text"
               value={cep}
+              maxLength={8}
               onChange={(e) => setCep(e.target.value)}
               placeholder="Digite seu CEP"
               required
@@ -219,6 +221,7 @@ function Header() {
             <input
               type="text"
               value={cpf}
+              maxLength={11}
               onChange={(e) => setCpf(e.target.value)}
               placeholder="Digite seu CPF"
               required
@@ -227,7 +230,6 @@ function Header() {
           </form>
         </Modal>
       )}
-
       {isSairConfirmOpen && (
         <ConfirmacaoSair onConfirm={handleConfirmSair} onCancel={() => setSairConfirmOpen(false)} />
       )}
