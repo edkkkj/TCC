@@ -61,9 +61,9 @@ function Home() {
 
         <div className="right-section">
           <h3>Beneficios do Descarte Consciente</h3>
-          <p>1-Redução de contaminação ambiental</p>
-          <p>2-Proteção à saúde humana e animal</p>
-          <p>3-Sensibilização e responsabilidade </p>
+          <h2>1-Redução de contaminação ambiental</h2>
+          <h2>2-Proteção à saúde humana e animal</h2>
+          <h2>3-Sensibilização e responsabilidade </h2>
         </div>
 
       </div>

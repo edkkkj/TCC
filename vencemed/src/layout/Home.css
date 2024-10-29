@@ -86,8 +86,14 @@ p {
 }
 
 .side-section, .right-section {
-  width: 33.3vw;
+  width: 33.3%;
   height: 350px;
+  padding: 20px;
+  box-sizing: border-box; /* Garante que o padding não afete a largura total */
+  display: flex; /* Para usar flexbox */
+  flex-direction: column; /* Coloca os elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza o texto */
 }
 
 .side-section {
@@ -99,14 +105,14 @@ p {
   height: 400px; /* Mantém a altura */
 }
 .side-section p {
-  margin: 0; /* Espaçamento em cima e embaixo dos parágrafos */
+  margin: 0;
   display: flex; /* Para usar flexbox nos parágrafos */
   align-items: center; /* Centraliza verticalmente */
-  padding-top: 80px;
+  padding: 50px 40px 1px;
 }
 .side-section h3{
  position: relative;
- top: 70px;
+ top: 30px;
  color: #2980b9;
 }
 
@@ -118,15 +124,15 @@ p {
   text-align: center; /* Centraliza o texto */
   height: 400px; /* Mantém a altura */
 }
-.right-section p {
+.right-section h2 {
   margin: 0; /* Espaçamento em cima e embaixo dos parágrafos */
   display: flex; /* Para usar flexbox nos parágrafos */
   align-items: center; /* Centraliza verticalmente */
-  padding-top: 80px;
+  padding: 40px 10px 1px;
 }
 .right-section h3 {
   position: relative;
-  top: 40px;
+  top: 20px;
   color: #2980b9;
   left: -50px;
 }
