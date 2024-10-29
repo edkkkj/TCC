@@ -24,17 +24,17 @@ function Impacto() {
       <div className="imagee-structure">
 
         <div className="sides-section">
-          <h3>Importância de Descartar corretamente</h3>
-          <p>
-          O descarte inconsciente de medicamentos requer mais atenção. Aqui, ensinamos como descartar corretamente, indo a pontos de coleta ou agendando serviços em nosso app.
-        </p>
+          <h3>Impactos</h3>
+          <p>1-Contaminação de recursos hídricos: Medicamentos descartados no lixo comum ou no esgoto acabam contaminando rios, lagos e oceanos.</p>
+          <p>2-Efeitos na saúde pública: O descarte inadequado de medicamentos favorece o acesso indevido a esses produtos, como em lixões ou aterros sanitários, onde pessoas e animais podem consumi-los de maneira inadequada. </p>
+          <p>3-Riscos para o solo e para a agricultura: Isso pode afetar a qualidade dos alimentos e prejudicar a saúde humana e animal</p>
         </div>
 
         <div className="center-image">
         </div>
 
         <div className="rights-section">
-          <h3>Riscos e Maleficios</h3>
+          <h3>Descarte Inadequado</h3>
           <p>
           Jogar esses medicamentos no lixo comum ou na descarga sanitária pode liberar substâncias químicas nocivas ao solo, à fauna e à saúde pública, afetando qualquer um que entrar em contato com áreas contaminadas.
         </p>
@@ -49,12 +49,6 @@ function Impacto() {
          {/* Imagem de onda acima da estrutura da imagem */}
          <img src={wavesImage} alt="Onda" className="waves-image" />
 
-      <div className="info-content">
-        <h2>Por que é importante descartar corretamente?</h2>
-        <p>
-          O descarte correto é essencial para evitar a contaminação do solo, da água e proteger a vida animal e humana. A conscientização é fundamental para minimizar esses impactos.
-        </p>
-      </div>
     </div>
   );
 }

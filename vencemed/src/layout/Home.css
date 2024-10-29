@@ -92,8 +92,18 @@ p {
 
 .side-section {
   background-color: #ADD8E6;
+  display: flex;
+  flex-direction: column; /* Mantém os elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza o texto */
+  height: 400px; /* Mantém a altura */
 }
-
+.side-section p {
+  margin: 0; /* Espaçamento em cima e embaixo dos parágrafos */
+  display: flex; /* Para usar flexbox nos parágrafos */
+  align-items: center; /* Centraliza verticalmente */
+  padding-top: 80px;
+}
 .side-section h3{
  position: relative;
  top: 70px;
@@ -102,8 +112,18 @@ p {
 
 .right-section {
   background-color: #87CEFA;
+  display: flex;
+  flex-direction: column; /* Mantém os elementos em coluna */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza o texto */
+  height: 400px; /* Mantém a altura */
 }
-
+.right-section p {
+  margin: 0; /* Espaçamento em cima e embaixo dos parágrafos */
+  display: flex; /* Para usar flexbox nos parágrafos */
+  align-items: center; /* Centraliza verticalmente */
+  padding-top: 80px;
+}
 .right-section h3 {
   position: relative;
   top: 40px;
